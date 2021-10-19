@@ -19,7 +19,7 @@
           dan cek estimasi perbaikan dimenu dashboard
         </p>
         <div>
-          <a href="dashboard-booking.html" class="btn btn-cte-home mt-4"
+          <a href="{{url("/customer/dashboard")}}" class="btn btn-cte-home mt-4"
             >Cek Status Booking</a
           >
         </div>

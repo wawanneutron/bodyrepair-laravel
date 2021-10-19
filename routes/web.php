@@ -22,3 +22,12 @@ Route::get('/booking-perbaikan', function () {
 Route::get('/booking-success', function () {
     return view('pages.success');
 });
+Route::get('/customer/dashboard', function () {
+    return view('pages.dashboard-user.dashboard');
+});
+Route::get('/customer/dashboard-booking', function () {
+    return view('pages.dashboard-user.dashboard-booking');
+});
+Route::get('/customer/dashboard-tracking', function () {
+    return view('pages.dashboard-user.dashboard-tracking');
+});

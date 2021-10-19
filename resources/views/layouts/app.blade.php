@@ -18,5 +18,6 @@
     {{-- footer --}}
     @include('includes.footer')
     @include('includes.script')
+    @stack('addon-script')
   </body>
 </html>

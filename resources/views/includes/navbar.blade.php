@@ -40,7 +40,7 @@
                 Account
             </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="/dashboard.html">Dashboard</a></li>
+            <li><a class="dropdown-item" href="{{ url("/customer/dashboard") }}">Dashboard</a></li>
             <li><a class="dropdown-item" href="#">History</a></li>
             <li><hr class="dropdown-divider" /></li>
             <li><a class="dropdown-item" href="#">Logout</a></li>
