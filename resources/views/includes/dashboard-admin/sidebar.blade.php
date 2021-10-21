@@ -84,7 +84,7 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('/admin/dashboard/price-list') }}">
+        <a class="nav-link" href="{{ route('dashboard.price-list.index') }}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Price List</span></a>
     </li>

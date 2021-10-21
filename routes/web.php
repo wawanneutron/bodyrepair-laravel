@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\PriceListController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,22 +24,30 @@ Route::get('/booking-perbaikan', function () {
 Route::get('/booking-success', function () {
     return view('pages.success');
 });
-Route::get('/customer/dashboard', function () {
-    return view('pages.dashboard-user.dashboard');
-});
-Route::get('/customer/dashboard-booking', function () {
-    return view('pages.dashboard-user.dashboard-booking');
-});
-Route::get('/customer/dashboard-tracking', function () {
-    return view('pages.dashboard-user.dashboard-tracking');
-});
 
-Route::get('/admin/dashboard', function () {
-    return view('pages.dashboard-admin.dashboard');
-});
-Route::get('/admin/dashboard/price-list', function () {
-    return view('pages.dashboard-admin.price-list');
-});
-Route::get('/admin/dashboard/booking-masuk', function () {
-    return view('pages.dashboard-admin.booking-masuk');
-});
+
+Route::prefix('customer')
+    ->middleware(['auth', 'user'])
+    ->group(function () {
+        Route::get('/dashboard', function () {
+            return view('pages.dashboard-user.dashboard');
+        });
+        Route::get('/dashboard-booking', function () {
+            return view('pages.dashboard-user.dashboard-booking');
+        });
+        Route::get('/dashboard-tracking', function () {
+            return view('pages.dashboard-user.dashboard-tracking');
+        });
+    });
+
+Route::prefix('admin')
+    ->middleware(['auth', 'admin'])
+    ->group(function () {
+        Route::get('/dashboard', function () {
+            return view('pages.dashboard-admin.dashboard');
+        });
+        Route::get('/dashboard/booking-masuk', function () {
+            return view('pages.dashboard-admin.booking-masuk');
+        });
+        Route::resource('/dashboard/price-list', PriceListController::class, ['as' => 'dashboard']);
+    });

@@ -17,6 +17,10 @@ class CreateUsersTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
+            $table->string('roles')->default('USER'); // user == customer , Admin == admin web
+            $table->string('avatar')->nullable();
+            // $table->string('no_wa');
+            // $table->longText('alamat');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
