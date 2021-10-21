@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\PriceListController;
+use App\Http\Controllers\BookingPerbaikanController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,18 +18,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('pages.home');
-});
-Route::get('/booking-perbaikan', function () {
-    return view('pages.booking');
-});
-Route::get('/booking-success', function () {
-    return view('pages.success');
-});
-
+})->name('home');
 
 Route::prefix('customer')
     ->middleware(['auth', 'user'])
     ->group(function () {
+        Route::get('/booking-perbaikan', [BookingPerbaikanController::class, 'index'])
+            ->name('booking');
+        Route::post('/booking-perbaikan', [BookingPerbaikanController::class, 'store'])
+            ->name('sendBooking');
+
+        Route::get('/booking-success/{id}', [BookingPerbaikanController::class, 'success'])
+            ->name('success');
+
         Route::get('/dashboard', function () {
             return view('pages.dashboard-user.dashboard');
         });

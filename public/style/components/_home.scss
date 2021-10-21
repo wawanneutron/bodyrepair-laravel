@@ -1,249 +1,249 @@
 .header {
-  margin-top: -70px;
-  margin-bottom: 100px;
-  .header-image {
-    position: relative;
-    background-image: url("/images/gabung.jpg");
-    height: 90vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    .header-color {
-      height: 100%;
-      width: 100%;
-      background-color: black;
-      opacity: 0.6;
-      transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+    margin-top: -110px;
+    margin-bottom: 100px;
+    .header-image {
+        position: relative;
+        background-image: url("/images/gabung.jpg");
+        height: 90vh;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        .header-color {
+            height: 100%;
+            width: 100%;
+            background-color: black;
+            opacity: 0.6;
+            transition: background 0.3s, border-radius 0.3s, opacity 0.3s;
+        }
     }
-  }
-  .title-header {
-    position: relative;
-    color: #fff;
-    margin-top: -40%;
-    h1 {
-      font-size: 50px;
-      letter-spacing: 5px;
+    .title-header {
+        position: relative;
+        color: #fff;
+        margin-top: -40%;
+        h1 {
+            font-size: 50px;
+            letter-spacing: 5px;
+        }
+        h2 {
+            font-weight: 300;
+            font-size: 20px;
+            margin: 20px;
+            letter-spacing: 3px;
+        }
+        h3 {
+            font-weight: bold;
+            color: #e29000;
+            font-size: 60px;
+            letter-spacing: 3px;
+        }
     }
-    h2 {
-      font-weight: 300;
-      font-size: 20px;
-      margin: 20px;
-      letter-spacing: 3px;
-    }
-    h3 {
-      font-weight: bold;
-      color: #e29000;
-      font-size: 60px;
-      letter-spacing: 3px;
-    }
-  }
 }
 main {
-  .info-panel {
-    border-radius: 8px;
-    background-color: #ffffff;
-    z-index: 1;
-    margin-top: 0;
-    padding-top: 50px;
-    padding-bottom: 20px;
-    color: #0f0e17;
-    font-weight: 600;
-    h4 {
-      font-size: 20px;
-      letter-spacing: 3px;
+    .info-panel {
+        border-radius: 8px;
+        background-color: #ffffff;
+        z-index: 1;
+        margin-top: 0;
+        padding-top: 50px;
+        padding-bottom: 20px;
+        color: #0f0e17;
+        font-weight: 600;
+        h4 {
+            font-size: 20px;
+            letter-spacing: 3px;
+        }
+        p {
+            font-weight: 300;
+            margin-top: 20px;
+            font-size: 16px;
+        }
     }
-    p {
-      font-weight: 300;
-      margin-top: 20px;
-      font-size: 16px;
-    }
-  }
 }
 /* about */
 .about {
-  margin-top: 100px;
-  .col-carousel {
-    h1 {
-      font-size: 28px;
-      margin-bottom: 30px;
-      font-weight: bold;
+    margin-top: 100px;
+    .col-carousel {
+        h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        img {
+            height: 350px;
+            border-radius: 12px;
+        }
     }
-    img {
-      height: 350px;
-      border-radius: 12px;
+    .title {
+        margin-top: 50px;
+        text-align: justify;
+        font-size: 16px;
+        line-height: 28px;
     }
-  }
-  .title {
-    margin-top: 50px;
-    text-align: justify;
-    font-size: 16px;
-    line-height: 28px;
-  }
 }
 
 /* info kontent */
 .info-content {
-  margin-top: 100px;
-  .text-header {
-    h1 {
-      font-size: 28px;
-      font-weight: bold;
-    }
-  }
-  .row-content {
     margin-top: 100px;
-    .col-content {
-      margin-bottom: 50px;
-      .circle {
-        background-color: #ff8906;
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        margin: 10px auto;
-        i {
-          margin: 20% 0;
-          // margin-top: 5px;
-          font-weight: 400;
-          color: rgb(224, 224, 224);
+    .text-header {
+        h1 {
+            font-size: 28px;
+            font-weight: bold;
         }
-      }
-      .title {
-        font-size: 18px;
-        font-weight: 500;
-        margin-bottom: 20px;
-      }
-      .subtitle {
-        font-weight: 300;
-        line-height: 25px;
-      }
     }
-  }
+    .row-content {
+        margin-top: 100px;
+        .col-content {
+            margin-bottom: 50px;
+            .circle {
+                background-color: #ff8906;
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                margin: 10px auto;
+                i {
+                    margin: 20% 0;
+                    // margin-top: 5px;
+                    font-weight: 400;
+                    color: rgb(224, 224, 224);
+                }
+            }
+            .title {
+                font-size: 18px;
+                font-weight: 500;
+                margin-bottom: 20px;
+            }
+            .subtitle {
+                font-weight: 300;
+                line-height: 25px;
+            }
+        }
+    }
 }
 /* services */
 .services {
-  margin-top: 100px;
-  .paralax-service {
-    height: 50vh;
-    position: relative;
-    background-size: cover;
-    background-image: url(/images/gabung.jpg);
-    background-size: auto;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-  }
+    margin-top: 100px;
+    .paralax-service {
+        height: 50vh;
+        position: relative;
+        background-size: cover;
+        background-image: url(/images/gabung.jpg);
+        background-size: auto;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
 
-  .paralax-service::after {
-    content: "";
-    width: 100%;
-    height: 50vh;
-    background-color: #000;
-    opacity: 0.5;
-    display: block;
-    top: 0;
-    position: absolute;
-  }
-  .title-service {
-    margin-top: -20%;
-    position: relative;
-    color: #fff;
-    letter-spacing: 5px;
-    p {
-      margin-top: 50px;
-      letter-spacing: 0;
-      font-size: 18px;
+    .paralax-service::after {
+        content: "";
+        width: 100%;
+        height: 50vh;
+        background-color: #000;
+        opacity: 0.5;
+        display: block;
+        top: 0;
+        position: absolute;
     }
-  }
-  .row-content {
-    margin-top: 180px;
-    .col-content {
-      margin-bottom: 50px;
-      .header-service {
-        text-align: center;
-        // margin-top: 20px;
-      }
-      .subtitle {
-        text-align: justify;
-      }
+    .title-service {
+        margin-top: -20%;
+        position: relative;
+        color: #fff;
+        letter-spacing: 5px;
+        p {
+            margin-top: 50px;
+            letter-spacing: 0;
+            font-size: 18px;
+        }
     }
-  }
+    .row-content {
+        margin-top: 180px;
+        .col-content {
+            margin-bottom: 50px;
+            .header-service {
+                text-align: center;
+                // margin-top: 20px;
+            }
+            .subtitle {
+                text-align: justify;
+            }
+        }
+    }
 }
 /* contanct */
 .contact {
-  margin-bottom: 100px;
-  .row-content {
-    .col-content {
-      padding-top: 20px;
-      background-color: #fff;
-      margin-top: -150px;
-      z-index: 0;
+    margin-bottom: 100px;
+    .row-content {
+        .col-content {
+            padding-top: 20px;
+            background-color: #fff;
+            margin-top: -150px;
+            z-index: 0;
+        }
+        .subtitle {
+            text-align: center !important;
+        }
     }
-    .subtitle {
-      text-align: center !important;
-    }
-  }
 }
 
 /* footer */
 footer {
-  margin-top: 20vh;
-  hr {
-    margin-bottom: 60px;
-  }
-  .sub-footer {
-    font-size: 14px;
-    font-weight: 300;
-  }
-  h4 {
-    font-size: 18px;
-    font-weight: 600;
-    text-decoration: underline;
-  }
-  .content {
-    font-size: 15px;
-    margin-top: 50px;
-    font-weight: 500;
+    margin-top: 20vh;
+    hr {
+        margin-bottom: 60px;
+    }
+    .sub-footer {
+        font-size: 14px;
+        font-weight: 300;
+    }
+    h4 {
+        font-size: 18px;
+        font-weight: 600;
+        text-decoration: underline;
+    }
+    .content {
+        font-size: 15px;
+        margin-top: 50px;
+        font-weight: 500;
 
-    .title {
-      a {
-        line-height: 30px;
-        text-decoration: none;
-        &:hover {
-          text-decoration: underline;
+        .title {
+            a {
+                line-height: 30px;
+                text-decoration: none;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
         }
-      }
-    }
-    .lingkaran {
-      position: relative;
-      font-size: 25px;
-      width: 40px;
-      height: 40px;
-      background-color: #ff8906;
-      border-radius: 100%;
-      float: left;
-      margin-bottom: 10px;
-      margin-right: 20px;
-      .btn-icon {
-        color: #fff;
-        position: absolute;
-        top: 51%;
-        left: 51%;
-        transform: translate(-50%, -50%);
-      }
-    }
-    .alamat {
-      .surel {
-        line-height: 35px;
-        margin-bottom: 20px;
-      }
-      clear: left;
-      p {
-        line-height: 35px;
-        i {
-          color: #ff8906;
+        .lingkaran {
+            position: relative;
+            font-size: 25px;
+            width: 40px;
+            height: 40px;
+            background-color: #ff8906;
+            border-radius: 100%;
+            float: left;
+            margin-bottom: 10px;
+            margin-right: 20px;
+            .btn-icon {
+                color: #fff;
+                position: absolute;
+                top: 51%;
+                left: 51%;
+                transform: translate(-50%, -50%);
+            }
         }
-      }
+        .alamat {
+            .surel {
+                line-height: 35px;
+                margin-bottom: 20px;
+            }
+            clear: left;
+            p {
+                line-height: 35px;
+                i {
+                    color: #ff8906;
+                }
+            }
+        }
     }
-  }
 }

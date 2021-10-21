@@ -16,7 +16,7 @@
                     </a>
                     <div class="dropdown-menu text-black-50">
                         <a href="{{ url('/') }} " class="dropdown-item mb-2"> Home</a>
-                        <a href="/login.html" class="dropdown-item text-black-50" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
+                        <a href="#" class="dropdown-item text-black-50" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
                     </div>
                 </li>
             </ul>

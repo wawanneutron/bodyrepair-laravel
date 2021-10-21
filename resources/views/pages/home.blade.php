@@ -12,7 +12,7 @@
                         <h1>MBS Auto Car And Paint</h1>
                         <h2>Menerima</h2>
                         <h3><span class="typing"></span></h3>
-                        <a href=" {{ url('/booking-perbaikan') }} " class="btn btn-cte mt-4">Booking Sekarang</a>
+                        <a href=" {{ route('booking') }} " class="btn btn-cte mt-4">Booking Sekarang</a>
                     </div>
                 </div>
             </div>
@@ -127,7 +127,7 @@
         </div>
         <div class="row text-center">
             <div class="col-12">
-                <a href="booking.html" class=" btn btn-cte-home">Booking Sekarang</a>
+                <a href="{{ route('booking') }}" class=" btn btn-cte-home">Booking Sekarang</a>
             </div>
         </div>
     </section>

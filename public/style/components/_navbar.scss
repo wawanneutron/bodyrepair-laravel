@@ -1,8 +1,13 @@
 .navbar {
-  z-index: 1;
-  .nav-item {
-    .nav-link {
-      color: white;
+    z-index: 1;
+    .nav-item {
+        .nav-avatar {
+            &:hover {
+                color: rgb(197, 197, 197) !important;
+            }
+        }
+        .nav-link {
+            color: white;
+        }
     }
-  }
 }

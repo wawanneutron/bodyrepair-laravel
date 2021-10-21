@@ -21,7 +21,7 @@ class CreateBookingsTable extends Migration
             $table->string('nama_mobil');
             $table->text('catatan');
             $table->date('tgl_kedatangan');
-            $table->enum('status', array('ditunda', 'diterima'));
+            $table->enum('status', array('ditunda', 'diterima'))->default('ditunda');
             $table->timestamps();
         });
     }

@@ -90,12 +90,16 @@ body .btn-home-page:hover {
   z-index: 1;
 }
 
+.navbar .nav-item .nav-avatar:hover {
+  color: #c5c5c5 !important;
+}
+
 .navbar .nav-item .nav-link {
   color: white;
 }
 
 .header {
-  margin-top: -70px;
+  margin-top: -110px;
   margin-bottom: 100px;
 }
 
