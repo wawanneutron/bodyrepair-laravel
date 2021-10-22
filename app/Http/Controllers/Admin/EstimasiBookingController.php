@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Booking;
+use App\Models\Estimasi;
 use Illuminate\Http\Request;
 
-class BookingMasukController extends Controller
+class EstimasiBookingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,10 @@ class BookingMasukController extends Controller
      */
     public function index()
     {
-        $bookings = Booking::with('users')->get();
-        return view('pages.dashboard-admin.booking.index', compact('bookings'));
+        $estimasiBooking = Estimasi::with(['users', 'booking'])->get();
+        return view('pages.dashboard-admin.estimasi.index', [
+            'estimasies' => $estimasiBooking
+        ]);
     }
 
     /**
@@ -71,20 +73,7 @@ class BookingMasukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
-            'status' => 'required'
-        ]);
-        $updateStatus = Booking::findOrFail($id);
-        $updateStatus->update([
-            'status'    => $request->status
-        ]);
-        if ($updateStatus) {
-            return redirect()->route('dashboard.booking-masuk.index')
-                ->with(['success' => 'Data Berhasil Diupdate!']);
-        } else {
-            return redirect()->route('dashboard.booking-masuk.index')
-                ->with(['error' => 'Data Gagal Diupdate!']);
-        }
+        //
     }
 
     /**

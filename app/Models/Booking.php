@@ -14,4 +14,9 @@ class Booking extends Model
         "nama_mobil", "catatan",
         "tgl_kedatangan", "status"
     ];
+
+    public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -3,14 +3,14 @@
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data </button>
-            <a href="#" class="btn btn-sm btn-primary shadow-sm">
+            <a href="#" class="btn btn-sm btn-primary ml-auto shadow-sm">
                 <i class="fas fa-download fa-sm text-white-50"></i>
                 Download Laporan
             </a>
         </div>
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Price List MBS Body Repair</h1>
+        <h1 class="h3 mb-2 text-gray-800">Estimasi Booking Customer</h1>
+        <div class="alert alert-info">menentukan kerusakan dan estimasi harga kerusakan</div>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             {{-- <div class="card-header py-3">
@@ -21,18 +21,36 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
-                                <th>Kode List Harga</th>
-                                <th>Jenis Pekerjaan</th>
-                                <th>Harga</th>
-                                <th>Options</th>
+                                <th>Kode Booking</th>
+                                <th>Customer</th>
+                                <th>Nopol</th>
+                                <th>Nama Mobil</th>
+                                <th>Total Harga</th>
+                                <th>status</th>
+                                <th>Option</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($priceList as $item)
+                            @forelse ($estimasies as $item)
                                 <tr>
-                                    <td>{{ $item->kd_price_list }}</td>
-                                    <td>{{ $item->jenis_pekerjaan }}</td>
-                                    <td>{{ moneyFormat($item->harga) }}</td>
+                                    <td>{{ $item->booking->no_booking }}</td>
+                                    <td>{{ $item->users->first_name }}</td>
+                                    <td>{{ $item->booking->nopol }}</td>
+                                    <td>{{ $item->booking->nama_mobil }}</td>
+                                    <td>
+                                        @if ($item->total_harga)
+                                            {{ moneyFormat($item->total_harga) }}
+                                        @else
+                                            <span class="badge badge-pill badge-danger">Not check-in</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($item->booking->status == 'ditunda')
+                                            <span class=" badge badge-pill  bg-primary text-light">{{ $item->booking->status }}</span>
+                                        @else
+                                            <span class=" badge badge-pill  bg-success text-light">{{ $item->booking->status }}</span>
+                                        @endif
+                                    </td>
                                     <td width="15%">
                                         <button class=" btn btn-sm btn-secondary" data-toggle="modal" data-target="#editModal{{ $item->id }}">
                                             <i class="far fa-edit mr-2"></i>ubah
@@ -56,8 +74,8 @@
                                                     @method('PUT')
                                                     <div class="form-group">
                                                         <label for="recipient-name" class="col-form-label">Jenis Pekerjaan:</label>
-                                                        <input type="text" name="jenis_pekerjaan" value="{{ $item->jenis_pekerjaan }}" class="form-control @error('jenis_pekerjaan') is_invalid @enderror"
-                                                               id="recipient-name">
+                                                        <input type="text" name="jenis_pekerjaan" value="{{ $item->jenis_pekerjaan }}"
+                                                               class="form-control @error('jenis_pekerjaan') is_invalid @enderror" id="recipient-name">
                                                         @error('jenis_pekerjaan')
                                                             <div class="alert alert-danger mt-1" role="alert">
                                                                 {{ $message }}

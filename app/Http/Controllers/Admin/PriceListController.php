@@ -125,6 +125,16 @@ class PriceListController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = PriceList::findOrFail($id);
+        $item->delete();
+        if ($item) {
+            return response()->json([
+                'status' => 'success'
+            ]);
+        } else {
+            return response()->json([
+                'status' => 'error'
+            ]);
+        }
     }
 }

@@ -1,11 +1,10 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+    <a class="sidebar-brand mb-4 d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon">
+            <img src="{{ url('/images/mbs_logo_transparent.png') }}" width="120" title="mbs body repair">
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
     </a>
 
     <!-- Divider -->
@@ -94,6 +93,13 @@
         <a class="nav-link" href="{{ route('dashboard.booking-masuk.index') }}">
             <i class="fas fa-fw fa-folder"></i>
             <span>Booking Masuk</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('dashboard.estimasi-booking.index') }}">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Estimasi Booking</span></a>
     </li>
 
     <!-- Divider -->

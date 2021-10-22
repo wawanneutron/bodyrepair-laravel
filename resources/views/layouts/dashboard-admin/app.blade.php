@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <title>Admin MBS - Body Repair</title>
     @include('includes.dashboard-admin.style')
@@ -58,5 +59,6 @@
     <!-- Bootstrap core JavaScript-->
     @include('includes.dashboard-admin.script')
 </body>
+@stack('addon-script')
 
 </html>
