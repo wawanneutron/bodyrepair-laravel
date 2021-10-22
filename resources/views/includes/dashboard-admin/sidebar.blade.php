@@ -91,7 +91,7 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="{{ url('/admin/dashboard/booking-masuk') }}">
+        <a class="nav-link" href="{{ route('dashboard.booking-masuk.index') }}">
             <i class="fas fa-fw fa-folder"></i>
             <span>Booking Masuk</span></a>
     </li>

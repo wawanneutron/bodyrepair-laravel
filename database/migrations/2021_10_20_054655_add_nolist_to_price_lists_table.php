@@ -14,7 +14,7 @@ class AddNolistToPriceListsTable extends Migration
     public function up()
     {
         Schema::table('price_lists', function (Blueprint $table) {
-            $table->string('no_price_list')->after('id');
+            $table->string('kd_price_list')->after('id');
         });
     }
 

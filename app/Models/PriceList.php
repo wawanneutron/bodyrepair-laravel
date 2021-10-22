@@ -9,5 +9,5 @@ class PriceList extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['no_price_list', 'jenis_pekerjaan', 'harga'];
+    protected $fillable = ['kd_price_list', 'jenis_pekerjaan', 'harga'];
 }

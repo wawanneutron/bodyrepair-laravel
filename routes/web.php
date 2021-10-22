@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BookingMasukController;
 use App\Http\Controllers\Admin\PriceListController;
 use App\Http\Controllers\BookingPerbaikanController;
 use Illuminate\Support\Facades\Auth;
@@ -48,8 +49,7 @@ Route::prefix('admin')
         Route::get('/dashboard', function () {
             return view('pages.dashboard-admin.dashboard');
         });
-        Route::get('/dashboard/booking-masuk', function () {
-            return view('pages.dashboard-admin.booking-masuk');
-        });
+        Route::resource('/dashboard/booking-masuk', BookingMasukController::class, ['as' => 'dashboard']);
+
         Route::resource('/dashboard/price-list', PriceListController::class, ['as' => 'dashboard']);
     });
