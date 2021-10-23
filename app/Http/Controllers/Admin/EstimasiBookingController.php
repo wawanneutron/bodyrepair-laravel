@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Estimasi;
+use App\Models\PriceList;
 use Illuminate\Http\Request;
 
 class EstimasiBookingController extends Controller
@@ -16,8 +17,10 @@ class EstimasiBookingController extends Controller
     public function index()
     {
         $estimasiBooking = Estimasi::with(['users', 'booking'])->get();
+        $listHarga = PriceList::all();
         return view('pages.dashboard-admin.estimasi.index', [
-            'estimasies' => $estimasiBooking
+            'estimasies' => $estimasiBooking,
+            'listHarga'  => $listHarga
         ]);
     }
 
@@ -61,7 +64,8 @@ class EstimasiBookingController extends Controller
      */
     public function edit($id)
     {
-        //
+        $estimasiBooking = Estimasi::findOrFail($id);
+        return view('pages.dashboard-admin.estimasi.edit', ['estimasi' => $estimasiBooking]);
     }
 
     /**

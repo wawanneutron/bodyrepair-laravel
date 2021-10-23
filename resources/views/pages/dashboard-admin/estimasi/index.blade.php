@@ -32,76 +32,89 @@
                         </thead>
                         <tbody>
                             @forelse ($estimasies as $item)
-                                <tr>
-                                    <td>{{ $item->booking->no_booking }}</td>
-                                    <td>{{ $item->users->first_name }}</td>
-                                    <td>{{ $item->booking->nopol }}</td>
-                                    <td>{{ $item->booking->nama_mobil }}</td>
-                                    <td>
-                                        @if ($item->total_harga)
-                                            {{ moneyFormat($item->total_harga) }}
-                                        @else
-                                            <span class="badge badge-pill badge-danger">Not check-in</span>
-                                        @endif
-                                    </td>
-                                    <td>
-                                        @if ($item->booking->status == 'ditunda')
-                                            <span class=" badge badge-pill  bg-primary text-light">{{ $item->booking->status }}</span>
-                                        @else
-                                            <span class=" badge badge-pill  bg-success text-light">{{ $item->booking->status }}</span>
-                                        @endif
-                                    </td>
-                                    <td width="15%">
-                                        <button class=" btn btn-sm btn-secondary" data-toggle="modal" data-target="#editModal{{ $item->id }}">
-                                            <i class="far fa-edit mr-2"></i>ubah
-                                        </button>
-                                        <button onclick="Delete(this.id)" id="{{ $item->id }}" class=" btn btn-sm btn-danger"><i class="fa fa-trash mr-2"></i>hapus</button>
-                                    </td>
-                                </tr>
-                                {{-- modal edit --}}
-                                <div class="modal fade" id="editModal{{ $item->id }}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title" id="editModalLabel">Edit list harga</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
+                                @if ($item->booking->status === 'diterima')
+                                    <tr>
+                                        <td>{{ $item->booking->no_booking }}</td>
+                                        <td>{{ $item->users->first_name }} {{ $item->users->last_name }}</td>
+                                        <td>{{ $item->booking->nopol }}</td>
+                                        <td>{{ $item->booking->nama_mobil }}</td>
+                                        <td>
+                                            @if ($item->total_harga)
+                                                {{ moneyFormat($item->total_harga) }}
+                                            @else
+                                                <span class="badge badge-pill badge-danger">Not check-in</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($item->booking->status == 'ditunda')
+                                                <span class=" badge badge-pill  bg-primary text-light">{{ $item->booking->status }}</span>
+                                            @else
+                                                <span class=" badge badge-pill  bg-success text-light">{{ $item->booking->status }}</span>
+                                            @endif
+                                        </td>
+                                        <td width="15%">
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false">
+                                                    Aksi
                                                 </button>
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                    <a href="{{ route('dashboard.estimasi-booking.edit', $item->id) }}" class=" btn btn-sm btn-primary dropdown-item ">
+                                                        <i class="fas fa-eye mr-2"></i>detail
+                                                    </a>
+                                                    <button type="button" class=" btn btn-sm btn-secondary dropdown-item" data-toggle="modal" data-target="#editModal{{ $item->id }}"><i
+                                                           class="far fa-edit mr-2"></i>ubah</button>
+                                                    <button onclick="Delete(this.id)" id="{{ $item->id }}" class=" btn btn-sm btn-danger dropdown-item "><i class="fa fa-trash mr-2"></i>hapus</button>
+                                                </div>
                                             </div>
-                                            <div class="modal-body">
-                                                <form action="{{ route('dashboard.price-list.update', $item->id) }}" method="POST">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <div class="form-group">
-                                                        <label for="recipient-name" class="col-form-label">Jenis Pekerjaan:</label>
-                                                        <input type="text" name="jenis_pekerjaan" value="{{ $item->jenis_pekerjaan }}"
-                                                               class="form-control @error('jenis_pekerjaan') is_invalid @enderror" id="recipient-name">
-                                                        @error('jenis_pekerjaan')
-                                                            <div class="alert alert-danger mt-1" role="alert">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="message-text" class="col-form-label">Harga:</label>
-                                                        <input type="number" name="harga" value="{{ $item->harga }}" class="         form-control @error('harga') is_invalid @enderror"
-                                                               id="recipient-name">
-                                                        @error('harga')
-                                                            <div class="alert alert-danger mt-1" role="alert">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                                                        <button type="submit" class="btn btn-primary">Update</button>
-                                                    </div>
-                                                </form>
+                                        </td>
+                                    </tr>
+                                    {{-- modal edit --}}
+                                    <div class="modal fade" id="editModal{{ $item->id }}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="editModalLabel">No Booking <strong>{{ $item->booking->no_booking }}</strong> </h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form action="{{ route('dashboard.estimasi-booking.update', $item->id) }}" method="POST">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <div class="form-group">
+                                                            <label for="recipient-name" class="col-form-label">No Polisi:</label>
+                                                            <input type="text" value="{{ $item->booking->nopol }}" class="form-control" disabled id="recipient-name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="recipient-name" class="col-form-label">Nama Kendaraan:</label>
+                                                            <input type="text" value="{{ $item->booking->nama_mobil }}" class="form-control" disabled id="recipient-name">
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="message-text" class="col-form-label">Status:</label>
+                                                            <select name="status" multiple class="form-control @error('status') is-invalid @enderror">
+                                                                <option selected disabled>--tentukan kerusakan--</option>
+                                                                @foreach ($listHarga as $list)
+                                                                    <option value="{{ $list->id }}">{{ $list->jenis_pekerjaan }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            @error('status')
+                                                                <div class="alert alert-danger mt-1">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                            <button type="submit" class="btn btn-primary">Update</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                {{-- end modal edit --}}
+                                @endif
                             @empty
                                 <div class="alert alert-danger">Tidak ada list harga</div>
                             @endforelse

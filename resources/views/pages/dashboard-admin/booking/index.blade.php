@@ -15,6 +15,7 @@
                         <thead>
                             <tr>
                                 <th>Kode Booking</th>
+                                <th>Customer</th>
                                 <th>Nama Kendaraan</th>
                                 <th>No Polisi</th>
                                 <th>Tanggal Kedatangan</th>
@@ -26,6 +27,7 @@
                             @foreach ($bookings as $booking)
                                 <tr>
                                     <td>{{ $booking->no_booking }}</td>
+                                    <td>{{ $booking->users->first_name }} {{ $booking->users->last_name }}</td>
                                     <td>{{ $booking->nama_mobil }}</td>
                                     <td>{{ $booking->nopol }}</td>
                                     <td>{{ dateID($booking->tgl_kedatangan) }}</td>
@@ -38,6 +40,7 @@
                                     </td>
                                     <td>
                                         <button type="button" class=" btn btn-sm btn-secondary" data-toggle="modal" data-target="#editModal{{ $booking->id }}"><i class="far fa-edit mr-2"></i>ubah</button>
+                                        <button onclick="Delete(this.id)" id="{{ $booking->id }}" class=" btn btn-sm btn-danger"><i class="fa fa-trash mr-2"></i>hapus</button>
                                     </td>
                                 </tr>
                                 {{-- modal edit --}}
@@ -67,6 +70,7 @@
                                                         <select name="status" class="form-control @error('status') is-invalid @enderror">
                                                             <option selected disabled>--pilih status diterima--</option>
                                                             <option value="diterima">diterima</option>
+                                                            <option value="ditunda">ditunda</option>
                                                         </select>
                                                         @error('status')
                                                             <div class="alert alert-danger mt-1">
@@ -93,3 +97,63 @@
 
     </div>
 @endsection
+@push('addon-script')
+    <script>
+        //ajax delete switalert
+        function Delete(id) {
+            var id = id;
+            var token = $("meta[name='csrf-token']").attr("content");
+            swal({
+                title: "APAKAH KAMU YAKIN ?",
+                text: "INGIN MENGHAPUS DATA INI!",
+                icon: "warning",
+                buttons: [
+                    'TIDAK',
+                    'YA'
+                ],
+                dangerMode: true,
+            }).then(function(isConfirm) {
+                if (isConfirm) {
+                    //ajax delete
+                    jQuery.ajax({
+                        url: "{{ route('dashboard.booking-masuk.index') }}/" + id,
+                        data: {
+                            "id": id,
+                            "_token": token
+                        },
+                        type: 'DELETE',
+                        success: function(response) {
+                            if (response.status == "success") {
+                                swal({
+                                    title: 'BERHASIL!',
+                                    text: 'DATA BERHASIL DIHAPUS!',
+                                    icon: 'success',
+                                    timer: 1000,
+                                    showConfirmButton: false,
+                                    showCancelButton: false,
+                                    buttons: false,
+                                }).then(function() {
+                                    location.reload();
+                                });
+                            } else {
+                                swal({
+                                    title: 'GAGAL!',
+                                    text: 'DATA GAGAL DIHAPUS!',
+                                    icon: 'error',
+                                    timer: 1000,
+                                    showConfirmButton: false,
+                                    showCancelButton: false,
+                                    buttons: false,
+                                }).then(function() {
+                                    location.reload();
+                                });
+                            }
+                        }
+                    });
+                } else {
+                    return true;
+                }
+            })
+        }
+    </script>
+@endpush

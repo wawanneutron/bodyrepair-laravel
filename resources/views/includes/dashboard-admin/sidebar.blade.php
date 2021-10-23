@@ -11,7 +11,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item  {{ Request::is('admin/dashboard') ? 'active' : '' }}">
         <a class="nav-link" href="{{ url('/admin/dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -82,21 +82,21 @@
     </li> --}}
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
+    <li class="nav-item {{ Request::is('admin/dashboard/price-list*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('dashboard.price-list.index') }}">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Price List</span></a>
     </li>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
+    <li class="nav-item {{ Request::is('admin/dashboard/booking-masuk*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('dashboard.booking-masuk.index') }}">
             <i class="fas fa-fw fa-folder"></i>
             <span>Booking Masuk</span></a>
     </li>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
+    <li class="nav-item {{ Request::is('admin/dashboard/estimasi-booking*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('dashboard.estimasi-booking.index') }}">
             <i class="fas fa-fw fa-folder"></i>
             <span>Estimasi Booking</span></a>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Estimasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -39,6 +40,10 @@ class BookingPerbaikanController extends Controller
             'nama_mobil'     => $request->nama_mobil,
             'tgl_kedatangan' => $request->tgl_kedatangan,
             'catatan'        => $request->catatan,
+        ]);
+        Estimasi::create([
+            'users_id'      => Auth::user()->id,
+            'booking_id'    => $data->id,
         ]);
         return redirect()->route('success', Auth::user()->id);
     }
