@@ -17,8 +17,7 @@ class CreateEstimasisTable extends Migration
             $table->id();
             $table->unsignedBigInteger('users_id');
             $table->unsignedBigInteger('booking_id');
-            $table->unsignedBigInteger('estimasi_price_id');
-            $table->integer('total_harga');
+            $table->integer('total_harga')->default(0);
             $table->timestamps();
         });
     }

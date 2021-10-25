@@ -13,7 +13,7 @@
 <!-- Page level custom scripts -->
 <script src="{{ url('/assets-admin/js/demo/chart-area-demo.js') }}"></script>
 <script src="{{ url('/assets-admin/js/demo/chart-pie-demo.js') }}"></script>
-
+<script src="{{ url('/assets-admin/vendor/select2/select2.min.js') }}"></script>
 <!-- sweetalert -->
 <script src="{{ url('/assets-admin/vendor/sweetalert/sweetalert.min.js') }}"></script>
 <script>

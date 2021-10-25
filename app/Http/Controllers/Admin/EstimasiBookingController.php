@@ -4,8 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Estimasi;
-use App\Models\PriceList;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class EstimasiBookingController extends Controller
 {
@@ -17,10 +18,9 @@ class EstimasiBookingController extends Controller
     public function index()
     {
         $estimasiBooking = Estimasi::with(['users', 'booking'])->get();
-        $listHarga = PriceList::all();
+
         return view('pages.dashboard-admin.estimasi.index', [
             'estimasies' => $estimasiBooking,
-            'listHarga'  => $listHarga
         ]);
     }
 
@@ -40,7 +40,7 @@ class EstimasiBookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
         //
     }
@@ -65,7 +65,12 @@ class EstimasiBookingController extends Controller
     public function edit($id)
     {
         $estimasiBooking = Estimasi::findOrFail($id);
-        return view('pages.dashboard-admin.estimasi.edit', ['estimasi' => $estimasiBooking]);
+        $subTotal = $estimasiBooking->priceLists()->sum('harga');
+
+        return view('pages.dashboard-admin.estimasi.edit', [
+            'estimasi' => $estimasiBooking,
+            'subtotal' => $subTotal
+        ]);
     }
 
     /**
@@ -77,7 +82,26 @@ class EstimasiBookingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Estimasi::findOrFail($id);
+
+        $data->priceLists()->sync($request->get('listPekerjaan'));
+
+        $data->update([
+            'users_id' => $data->users_id,
+            'booking_id' => $data->booking_id,
+            'total_harga' => $data->priceLists()->sum('harga') +
+                hitungPajak($data->priceLists()->sum('harga'))
+        ]);
+
+        $data->save();
+
+        if ($data) {
+            return redirect()->route('dashboard.estimasi-booking.edit', $data->id)
+                ->with(['success' => 'Data Berhasil Disimpan!']);
+        } else {
+            return redirect()->route('dashboard.estimasi-booking.edit', $data->id)
+                ->with(['error' => 'Data Gagal Disimpan!']);
+        }
     }
 
     /**

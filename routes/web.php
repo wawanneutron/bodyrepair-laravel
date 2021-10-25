@@ -53,4 +53,5 @@ Route::prefix('admin')
         Route::resource('/dashboard/booking-masuk', BookingMasukController::class, ['as' => 'dashboard']);
         Route::resource('/dashboard/estimasi-booking', EstimasiBookingController::class, ['as' => 'dashboard']);
         Route::resource('/dashboard/price-list', PriceListController::class, ['as' => 'dashboard']);
+        Route::get('/dashboard/ajax/job-list/search', [PriceListController::class, 'ajaxSearch']);
     });

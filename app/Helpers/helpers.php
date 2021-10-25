@@ -17,3 +17,12 @@ if (!function_exists('moneyFormat')) {
         return 'Rp. ' . number_format($str, '0', '', '.');
     }
 }
+
+if (!function_exists('hitungPajak')) {
+    function hitungPajak($number)
+    {
+        $harga = $number;
+        $ppn = 0.1;
+        return $harga * $ppn;
+    }
+}

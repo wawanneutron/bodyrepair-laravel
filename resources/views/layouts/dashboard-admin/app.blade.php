@@ -60,5 +60,6 @@
     @include('includes.dashboard-admin.script')
 </body>
 @stack('addon-script')
+@stack('prepend-script')
 
 </html>

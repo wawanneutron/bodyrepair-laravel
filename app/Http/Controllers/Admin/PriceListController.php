@@ -137,4 +137,13 @@ class PriceListController extends Controller
             ]);
         }
     }
+
+    public function ajaxSearch(Request $request)
+    {
+        $keyword = $request->get('q');
+
+        $priceList = PriceList::where('jenis_pekerjaan', 'LIKE', "%$keyword%")->get();
+
+        return $priceList;
+    }
 }
