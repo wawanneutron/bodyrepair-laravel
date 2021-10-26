@@ -19,7 +19,7 @@ class CreateEstimasiListTable extends Migration
             $table->unsignedBigInteger('price_list_id');
             $table->timestamps();
 
-            $table->foreign('estimasi_id')->references('id')->on('estimasis');
+            $table->foreign('estimasi_id')->references('id')->on('estimasis')->onDelete('cascade');
             $table->foreign('price_list_id')->references('id')->on('price_lists');
         });
     }

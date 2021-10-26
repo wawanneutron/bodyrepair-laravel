@@ -96,15 +96,18 @@ class BookingMasukController extends Controller
     public function destroy($id)
     {
         $bookingDelete = Booking::findOrFail($id);
+        $deleteEstimasi = $bookingDelete->estimasies();
         $bookingDelete->delete();
+        $deleteEstimasi->delete();
+
         if ($bookingDelete) {
-            return response()->json('success', [
+            return response()->json([
                 'status' => 'success'
             ]);
         } else {
             return response()->json([
                 'status' => 'error',
-            ]);
+            ], 500);
         }
     }
 }

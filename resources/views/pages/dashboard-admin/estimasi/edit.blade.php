@@ -66,27 +66,7 @@
                 <h6 class="m-0 font-weight-bold text-primary">Jenis perbaikan pada kendaraan</h6>
             </div>
             <div class="card-body">
-                {{-- <div class="table-responsive">
-                    <table class="table table-bordered table-info text-center" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>Kode</th>
-                                <th>Jenis Pekerjaan</th>
-                                <th>Harga</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($estimasi->priceLists as $item)
-                                <tr>
-                                    <td>{{ $item->kd_price_list }}</td>
-                                    <td>{{ $item->jenis_pekerjaan }}</td>
-                                    <td>{{ moneyFormat($item->harga) }}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div> --}}
-                <div class="table-responsive-sm">
+                <div class="table-responsive-sm table-hover">
                     <table class="table table-striped">
                         <thead>
                             <tr>
@@ -109,10 +89,10 @@
                     </table>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4 col-sm-5">
+                    <div class="col-md-5 col-sm-5">
                     </div>
-                    <div class="col-lg-4 col-sm-5 ml-auto">
-                        <table class="table table-clear">
+                    <div class="col-md-4 col-sm-5 ml-auto">
+                        <table class="table table-hover">
                             <tbody>
                                 <tr>
                                     <td class="left">

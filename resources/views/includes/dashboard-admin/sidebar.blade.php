@@ -16,6 +16,12 @@
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
+    <!-- Nav Item - Charts -->
+    <li class="nav-item {{ Request::is('admin/dashboard/price-list*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('dashboard.price-list.index') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Price List</span></a>
+    </li>
 
     <!-- Divider -->
     {{-- <hr class="sidebar-divider">
@@ -81,13 +87,6 @@
         </div>
     </li> --}}
 
-    <!-- Nav Item - Charts -->
-    <li class="nav-item {{ Request::is('admin/dashboard/price-list*') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('dashboard.price-list.index') }}">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Price List</span></a>
-    </li>
-
     <!-- Nav Item - Tables -->
     <li class="nav-item {{ Request::is('admin/dashboard/booking-masuk*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('dashboard.booking-masuk.index') }}">
@@ -98,8 +97,15 @@
     <!-- Nav Item - Tables -->
     <li class="nav-item {{ Request::is('admin/dashboard/estimasi-booking*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('dashboard.estimasi-booking.index') }}">
-            <i class="fas fa-fw fa-folder"></i>
+            <i class="fas fa-dollar-sign"></i>
             <span>Estimasi Booking</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
+    <li class="nav-item {{ Request::is('admin/dashboard/pengerjaan-bodyrepair*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('dashboard.pengerjaan-bodyrepair.index') }}">
+            <i class="fas fa-sync fa-spin"></i>
+            <span>Pengerjaan</span></a>
     </li>
 
     <!-- Divider -->

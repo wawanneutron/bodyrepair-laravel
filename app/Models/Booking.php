@@ -19,4 +19,9 @@ class Booking extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function estimasies()
+    {
+        return $this->belongsTo(Estimasi::class, 'id', 'booking_id');
+    }
 }

@@ -140,9 +140,9 @@
                                     title: 'GAGAL!',
                                     text: 'DATA GAGAL DIHAPUS!',
                                     icon: 'error',
-                                    timer: 1000,
+                                    // timer: 1000,
                                     showConfirmButton: false,
-                                    showCancelButton: false,
+                                    showCancelButton: true,
                                     buttons: false,
                                 }).then(function() {
                                     location.reload();

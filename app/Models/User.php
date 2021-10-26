@@ -55,4 +55,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Estimasi::class);
     }
+
+    public function pengerjaans()
+    {
+        return $this->hasMany(Pengerjaan::class);
+    }
 }
