@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Booking;
+use App\Models\Pengerjaan;
+use App\Models\PengerjaanGallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BookingMasukController extends Controller
 {
@@ -96,11 +99,20 @@ class BookingMasukController extends Controller
     public function destroy($id)
     {
         $bookingDelete = Booking::findOrFail($id);
-        $deleteEstimasi = $bookingDelete->estimasies();
-        $bookingDelete->delete();
-        $deleteEstimasi->delete();
+        $deleteEstimasi = $bookingDelete->estimasies()->delete();
 
-        if ($bookingDelete) {
+        $pengerjaan = Pengerjaan::where('booking_id', $bookingDelete->id)
+            ->where('booking_id', $bookingDelete->id)
+            ->delete();
+        $galleries = PengerjaanGallery::where('booking_id', $bookingDelete->id)->get();
+        foreach ($galleries as $image) {
+            Storage::disk('local')->delete('public/' . $image->images);
+            $image->delete();
+        }
+
+        $bookingDelete->delete();
+
+        if ($bookingDelete || $deleteEstimasi || $galleries || $pengerjaan) {
             return response()->json([
                 'status' => 'success'
             ]);

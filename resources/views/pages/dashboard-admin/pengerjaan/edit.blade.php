@@ -151,11 +151,14 @@
                                 @method('PUT')
                                 <div class="col-12">
                                     <div class="form-group">
-                                        <label for="pengerjaan">Satatu pekerjaan</label>
-                                        <select name="status" class=" form-control">
-                                            <option value="{{ $pengerjaan->status }}">{{ $pengerjaan->status }}</option>
-                                            <option value="proses">proses</option>
-                                        </select>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="status" id="dikerjakan" value="proses" {{ $pengerjaan->status == 'proses' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="dikerjakan">Sedang dikerjakan</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="status" id="selesai" value="selesai" {{ $pengerjaan->status == 'selesai' ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="selesai">Selsai</label>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-12 mt-2">

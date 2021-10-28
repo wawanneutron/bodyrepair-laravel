@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\BookingMasukController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EstimasiBookingController;
 use App\Http\Controllers\Admin\PengerjaanController;
 use App\Http\Controllers\Admin\PriceListController;
@@ -48,9 +49,7 @@ Route::prefix('customer')
 Route::prefix('admin')
     ->middleware(['auth', 'admin'])
     ->group(function () {
-        Route::get('/dashboard', function () {
-            return view('pages.dashboard-admin.dashboard');
-        });
+        Route::get('/dashboard/statistik', [DashboardController::class, 'index'])->name('dashboard');
         Route::resource('/dashboard/booking-masuk', BookingMasukController::class, ['as' => 'dashboard']);
         Route::resource('/dashboard/estimasi-booking', EstimasiBookingController::class, ['as' => 'dashboard']);
         Route::resource('/dashboard/price-list', PriceListController::class, ['as' => 'dashboard']);

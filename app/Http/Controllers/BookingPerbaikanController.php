@@ -6,6 +6,7 @@ use App\Http\Requests\BookingRequest;
 use App\Models\Booking;
 use App\Models\Estimasi;
 use App\Models\Pengerjaan;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
@@ -31,6 +32,13 @@ class BookingPerbaikanController extends Controller
             }
             $noBooking = 'MBS-' . Str::upper($random);
             $request = Request();
+
+            $user = Auth::user();
+            $user->update([
+                'no_wa' => $request->no_wa,
+                'alamat' => $request->alamat
+            ]);
+
             $data = Booking::create([
                 'users_id'       => Auth::user()->id,
                 'no_booking'     => $noBooking,

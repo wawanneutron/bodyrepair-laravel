@@ -87,6 +87,7 @@ class PengerjaanController extends Controller
 
         $data = PengerjaanGallery::create([
             'pengerjaan_id' => $pengerjaan->id,
+            'booking_id' => $pengerjaan->booking_id,
             'nama_pengerjaan' => $request->nama_pengerjaan,
             'images' => $image,
             'status' => 'proses'

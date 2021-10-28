@@ -1,7 +1,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand mb-4 d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand mb-4 d-flex align-items-center justify-content-center" href="{{ route('dashboard') }}">
         <div class="sidebar-brand-icon">
             <img src="{{ url('/images/mbs_logo_transparent.png') }}" width="120" title="mbs body repair">
         </div>
@@ -12,7 +12,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item  {{ Request::is('admin/dashboard') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ url('/admin/dashboard') }}">
+        <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>

@@ -24,7 +24,6 @@
                             </tr>
                         </thead>
                         <thead>
-
                             @forelse ($data as $item)
                                 @if ($item->booking->estimasies->total_harga !== 0)
                                     <tr>
@@ -35,11 +34,10 @@
                                         <td>{{ dateID($item->booking->tgl_kedatangan) }}</td>
                                         <td>
                                             @if ($item->status == 'proses')
-                                                <span class="badge badge-info">sedang diproses</span>
+                                                <span class="btn btn-sm btn-info"> <i class="fas fa-cog fa-spin mr-1"></i>pengerjaan</span>
                                             @else
-                                                <span class="badge badge-success">proses selesai</span>
+                                                <span class="btn btn-sm btn-success"><i class="fas fa-check-circle mr-1"></i>selesai</span>
                                             @endif
-
                                         </td>
                                         <td>
                                             <div class="dropdown">

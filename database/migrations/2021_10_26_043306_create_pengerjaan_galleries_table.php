@@ -16,6 +16,7 @@ class CreatePengerjaanGalleriesTable extends Migration
         Schema::create('pengerjaan_galleries', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('pengerjaan_id');
+            $table->unsignedBigInteger('booking_id');
             $table->string('nama_pengerjaan');
             $table->string('images');
             $table->enum('status', array('proses', 'selesai'))->default('proses');

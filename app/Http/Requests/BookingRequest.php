@@ -27,7 +27,9 @@ class BookingRequest extends FormRequest
             'nopol'          => 'required',
             'nama_mobil'     => 'required',
             'catatan'        => 'required',
-            'tgl_kedatangan' => 'required'
+            'tgl_kedatangan' => 'required',
+            'no_wa'          => 'required',
+            'alamat'         => 'required'
         ];
     }
 }
