@@ -17,7 +17,8 @@ class CreatePengerjaansTable extends Migration
             $table->id();
             $table->unsignedBigInteger('users_id');
             $table->unsignedBigInteger('booking_id');
-            $table->enum('status', array('not-checkin', 'proses', 'selesai'))->default('proses');
+            $table->unsignedBigInteger('estimasi_id');
+            $table->enum('status', array('not-checkin', 'proses', 'selesai'))->default('not-checkin');
             $table->timestamps();
         });
     }

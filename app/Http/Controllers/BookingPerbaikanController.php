@@ -39,7 +39,7 @@ class BookingPerbaikanController extends Controller
                 'tgl_kedatangan' => $request->tgl_kedatangan,
                 'catatan'        => $request->catatan,
             ]);
-            Estimasi::create([
+            $estimasi = Estimasi::create([
                 'users_id'      => Auth::user()->id,
                 'booking_id'    => $data->id,
             ]);
@@ -47,6 +47,8 @@ class BookingPerbaikanController extends Controller
             Pengerjaan::create([
                 'users_id' => $data->users_id,
                 'booking_id' => $data->id,
+                'estimasi_id' => $estimasi->id,
+                'status' => 'not-checkin'
             ]);
         });
         return redirect()->route('success', Auth::user()->id);

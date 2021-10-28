@@ -9,7 +9,7 @@ class Pengerjaan extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['users_id', 'booking_id'];
+    protected $fillable = ['users_id', 'booking_id', 'estimasi_id', 'status'];
 
     public function users()
     {
@@ -24,5 +24,10 @@ class Pengerjaan extends Model
     public function pengerjaanGalleries()
     {
         return $this->hasMany(PengerjaanGallery::class);
+    }
+
+    public function estimasi()
+    {
+        return $this->belongsTo(Estimasi::class);
     }
 }

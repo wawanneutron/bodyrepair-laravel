@@ -9,7 +9,7 @@ class PengerjaanGallery extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['pengerjaan_id', 'nama_pengerjaan', 'status'];
+    protected $fillable = ['pengerjaan_id', 'nama_pengerjaan', 'images', 'status'];
 
     public function booking()
     {

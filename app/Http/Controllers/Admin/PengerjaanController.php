@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pengerjaan;
+use App\Models\PengerjaanGallery;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PengerjaanController extends Controller
 {
@@ -59,7 +61,11 @@ class PengerjaanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pengerjaan = Pengerjaan::findOrFail($id);
+        $subtotal = $pengerjaan->estimasi->priceLists()->sum('harga');
+        $dataPengerjaan = PengerjaanGallery::where('pengerjaan_id', $pengerjaan->id)->get();
+
+        return view('pages.dashboard-admin.pengerjaan.edit', compact('pengerjaan', 'subtotal', 'dataPengerjaan'));
     }
 
     /**
@@ -74,6 +80,44 @@ class PengerjaanController extends Controller
         //
     }
 
+    public function createHistory(Request $request, $id)
+    {
+        $pengerjaan = Pengerjaan::find($id);
+        $image = $request->file('images')->store('history-images', 'public');
+
+        $data = PengerjaanGallery::create([
+            'pengerjaan_id' => $pengerjaan->id,
+            'nama_pengerjaan' => $request->nama_pengerjaan,
+            'images' => $image,
+            'status' => 'proses'
+        ]);
+
+        if ($data || $image) {
+            return redirect()->route('dashboard.pengerjaan-bodyrepair.edit', $pengerjaan->id)
+                ->with(['success' => 'Data Berhasil Disimpan!']);
+        } else {
+            return redirect()->route('dashboard.estimasi-bodyrepair.edit', $pengerjaan->id)
+                ->with(['error' => 'Data Gagal Disimpan!']);
+        }
+    }
+
+
+    public function updateStatus(Request $request, $id)
+    {
+        $pengerjaan = Pengerjaan::find($id);
+
+        $pengerjaan->update([
+            'status' => $request->status
+        ]);
+
+        if ($pengerjaan) {
+            return redirect()->route('dashboard.pengerjaan-bodyrepair.edit', $pengerjaan->id)
+                ->with(['success' => 'Data Berhasil Disimpan!']);
+        } else {
+            return redirect()->route('dashboard.estimasi-bodyrepair.edit', $pengerjaan->id)
+                ->with(['error' => 'Data Gagal Disimpan!']);
+        }
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -82,6 +126,19 @@ class PengerjaanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pengerjaan = PengerjaanGallery::findOrFail($id);
+        Storage::disk('local')->delete('public/' . $pengerjaan->images);
+
+        $pengerjaan->delete();
+
+        if ($pengerjaan) {
+            return response()->json([
+                'status' => 'success'
+            ]);
+        } else {
+            return response()->json([
+                'status' => 'error'
+            ]);
+        }
     }
 }

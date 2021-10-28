@@ -84,6 +84,7 @@ class EstimasiBookingController extends Controller
     public function update(Request $request, $id)
     {
         $data = Estimasi::findOrFail($id);
+        $pengerjaan = Pengerjaan::where('estimasi_id', $data->id)->first();
 
         $data->priceLists()->sync($request->get('listPekerjaan'));
 
@@ -92,6 +93,10 @@ class EstimasiBookingController extends Controller
             'booking_id' => $data->booking_id,
             'total_harga' => $data->priceLists()->sum('harga') +
                 hitungPajak($data->priceLists()->sum('harga'))
+        ]);
+
+        $pengerjaan->update([
+            'status' => 'proses'
         ]);
 
         $data->save();

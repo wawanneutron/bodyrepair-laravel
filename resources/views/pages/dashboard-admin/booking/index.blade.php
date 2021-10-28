@@ -18,7 +18,7 @@
                                 <th>Customer</th>
                                 <th>Nama Kendaraan</th>
                                 <th>No Polisi</th>
-                                <th>Tanggal Kedatangan</th>
+                                <th>Tanggal Booking</th>
                                 <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
@@ -30,7 +30,7 @@
                                     <td>{{ $booking->users->first_name }} {{ $booking->users->last_name }}</td>
                                     <td>{{ $booking->nama_mobil }}</td>
                                     <td>{{ $booking->nopol }}</td>
-                                    <td>{{ dateID($booking->tgl_kedatangan) }}</td>
+                                    <td>{{ dateID($booking->created_at) }}</td>
                                     <td>
                                         @if ($booking->status == 'ditunda')
                                             <span class=" badge badge-pill  bg-primary text-light">{{ $booking->status }}</span>

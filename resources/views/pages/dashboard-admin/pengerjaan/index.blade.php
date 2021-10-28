@@ -19,6 +19,7 @@
                                 <th>Nama Kendaraan</th>
                                 <th>No Polisi</th>
                                 <th>Tanggal Booking</th>
+                                <th>Status</th>
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -31,7 +32,15 @@
                                         <td>{{ $item->users->first_name }} {{ $item->users->last_name }}</td>
                                         <td>{{ $item->booking->nama_mobil }}</td>
                                         <td>{{ $item->booking->nopol }}</td>
-                                        <td>{{ dateID($item->tgl_booking) }}</td>
+                                        <td>{{ dateID($item->booking->tgl_kedatangan) }}</td>
+                                        <td>
+                                            @if ($item->status == 'proses')
+                                                <span class="badge badge-info">sedang diproses</span>
+                                            @else
+                                                <span class="badge badge-success">proses selesai</span>
+                                            @endif
+
+                                        </td>
                                         <td>
                                             <div class="dropdown">
                                                 <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
@@ -39,7 +48,7 @@
                                                     Aksi
                                                 </button>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                    <a href="{{ route('dashboard.estimasi-booking.edit', $item->id) }}" class=" btn btn-sm btn-primary dropdown-item ">
+                                                    <a href="{{ route('dashboard.pengerjaan-bodyrepair.edit', $item->id) }}" class=" btn btn-sm btn-primary dropdown-item ">
                                                         <i class="far fa-edit mr-2"></i>ubah
                                                     </a>
                                                 </div>

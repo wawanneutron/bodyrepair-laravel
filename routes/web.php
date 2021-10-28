@@ -55,5 +55,7 @@ Route::prefix('admin')
         Route::resource('/dashboard/estimasi-booking', EstimasiBookingController::class, ['as' => 'dashboard']);
         Route::resource('/dashboard/price-list', PriceListController::class, ['as' => 'dashboard']);
         Route::resource('/dashboard/pengerjaan-bodyrepair', PengerjaanController::class, ['as' => 'dashboard']);
+        Route::post('/dashboard/create-history-pengerjaan-bodyrepair/{id}', [PengerjaanController::class, 'createHistory'])->name('create-history');
+        Route::put('/dashboard/update-pengerjaan-bodyrepair/{id}', [PengerjaanController::class, 'updateStatus'])->name('update-status');
         Route::get('/dashboard/ajax/job-list/search', [PriceListController::class, 'ajaxSearch']);
     });
