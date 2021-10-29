@@ -6,19 +6,12 @@ use App\Http\Controllers\Admin\EstimasiBookingController;
 use App\Http\Controllers\Admin\PengerjaanController;
 use App\Http\Controllers\Admin\PriceListController;
 use App\Http\Controllers\BookingPerbaikanController;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\User\BookingController;
+use App\Http\Controllers\User\EstimasiController;
+use App\Http\Controllers\User\DashboardController as UserDashboardController;
+use App\Http\Controllers\User\PengerjaanController as UserPengerjaanController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('pages.home');
@@ -31,19 +24,18 @@ Route::prefix('customer')
             ->name('booking');
         Route::post('/booking-perbaikan', [BookingPerbaikanController::class, 'store'])
             ->name('sendBooking');
-
         Route::get('/booking-success/{id}', [BookingPerbaikanController::class, 'success'])
             ->name('success');
 
-        Route::get('/dashboard', function () {
-            return view('pages.dashboard-user.dashboard');
-        });
-        Route::get('/dashboard-booking', function () {
-            return view('pages.dashboard-user.dashboard-booking');
-        });
-        Route::get('/dashboard-tracking', function () {
-            return view('pages.dashboard-user.dashboard-tracking');
-        });
+        Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard-user');
+        Route::get('/dashboard/info-booking', [BookingController::class, 'booking'])->name('info-booking');
+        Route::put('/dashboard/info-booking/{id}', [BookingController::class, 'update'])->name('info-booking-update');
+
+        Route::get('/dashboard/info-estimasi', [EstimasiController::class, 'index'])->name('info-estimasi');
+        Route::get('/dashboard/detail-estimasi/{id}', [EstimasiController::class, 'details'])->name('detail-estimasi');
+
+        Route::get('/dashboard/info-pengerjaan', [UserPengerjaanController::class, 'index'])->name('info-pengerjaan');
+        Route::get('/dashboard/detail-pengerjaan/{id}', [UserPengerjaanController::class, 'details'])->name('detail-pengerjaan');
     });
 
 Route::prefix('admin')

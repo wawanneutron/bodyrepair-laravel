@@ -31,7 +31,7 @@
                             <div class="row">
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1" class="form-label">No Polisi / Nomor Kendaraan</label>
+                                        <label for="exampleInputEmail1" class="form-label small">No Polisi / Nomor Kendaraan</label>
                                         <input type="text" name="nopol" value="{{ old('nopol') }}" class="form-control @error('nopol') is-invalid @enderror" />
                                         @error('nopol')
                                             <div class="alert alert-danger mt-2">
@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1" class="form-label">Nama Kendaraan</label>
+                                        <label for="exampleInputEmail1" class="form-label small">Nama Kendaraan</label>
                                         <input type="text" name="nama_mobil" value="{{ old('nama_mobil') }}" class="form-control @error('nama_mobil') is-invalid @enderror" />
                                         @error('nama_mobil')
                                             <div class="alert alert-danger mt-2">
@@ -53,7 +53,7 @@
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1" class="form-label">No Whastapp / Hp</label>
+                                        <label for="exampleInputEmail1" class="form-label small">No Whastapp / Hp</label>
                                         <input type="number" name="no_wa" value="{{ Auth::user()->no_wa }}" class="form-control @error('no_wa') is-invalid @enderror" />
                                         @error('no_wa')
                                             <div class="alert alert-danger mt-2">
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="col-md-6 mb-4">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1" class="form-label">Tanggal Kedatangan</label>
+                                        <label for="exampleInputEmail1" class="form-label small">Tanggal Kedatangan</label>
                                         <input type="date" name="tgl_kedatangan" value="{{ old('tgl_kedatangan') }}" class="form-control @error('tgl_kedatangan') is-invalid @enderror" />
                                         @error('tgl_kedatangan')
                                             <div class="alert alert-danger mt-2">
@@ -75,7 +75,7 @@
                                 </div>
                                 <div class="mb-4">
                                     <div class="form-group">
-                                        <label for="exampleFormControlTextarea1" class="form-label">Alamat Rumah</label>
+                                        <label for="exampleFormControlTextarea1" class="form-label small">Alamat Rumah</label>
                                         <textarea class="form-control" name="alamat" value="{{ old('alamat') }}" class="form-control @error('alamat') is-invalid @enderror"
                                                   id="exampleFormControlTextarea1" rows="3">{{ Auth::user()->alamat }}</textarea>
                                         @error('alamat')
@@ -87,7 +87,7 @@
                                 </div>
                                 <div class="mb-4">
                                     <div class="form-group">
-                                        <label for="exampleFormControlTextarea1" class="form-label">Catatan Kerusakan</label>
+                                        <label for="exampleFormControlTextarea1" class="form-label small">Tambahkan Catatan Perbaikan</label>
                                         <textarea class="form-control" name="catatan" value="{{ old('catatan') }}" class="form-control @error('catatan') is-invalid @enderror"
                                                   id="exampleFormControlTextarea1" rows="3"></textarea>
                                         @error('catatan')

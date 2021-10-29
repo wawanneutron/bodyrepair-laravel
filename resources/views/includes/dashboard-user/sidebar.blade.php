@@ -1,33 +1,16 @@
 <div class="border-right" id="sidebar-wrapper">
     <div class="sidebar-heading text-center">
-    <img
-        src="/images/Logo-Tekno-Oke.png"
-        width="80"
-        alt=""
-        class="my-3"
-    />
+        <img src="{{ url('/images/Logo-Tekno-Oke.png') }}" width="80" alt="" class="my-3" />
     </div>
     <div class="list-group list-group-flush">
-    <a
-        href="{{ url("/customer/dashboard") }}"
-        class="list-group-item list-group-item-action active"
-        >Dashboard</a
-    >
-    <a
-        href=" {{ url("/customer/dashboard-booking") }} "
-        class="list-group-item list-group-item-action"
-        >Booking</a
-    >
-    <a
-        href=" {{ url("/customer/dashboard-tracking") }}"
-        class="list-group-item list-group-item-action"
-        >Tracking Pengerjaan</a
-    >
-    <a href="#" class="list-group-item list-group-item-action"
-        >Transactions</a
-    >
-    <a href="#" class="list-group-item list-group-item-action"
-        >My Account</a
-    >
+        <a href="{{ route('dashboard-user') }}" class="list-group-item list-group-item-action {{ Request::is('customer/dashboard') ? 'active' : '' }}">Dashboard</a>
+        <a href=" {{ route('info-booking') }} " class="list-group-item list-group-item-action {{ Request::is('customer/dashboard/info-booking*') ? 'active' : '' }}">Booking</a>
+        <a href=" {{ route('info-estimasi') }} "
+           class="list-group-item list-group-item-action {{ Request::is('customer/dashboard/info-estimasi*') ? 'active' : '' }} {{ Request::is('customer/dashboard/detail-estimasi*') ? 'active' : '' }}">Estimasi</a>
+        <a href=" {{ route('info-pengerjaan') }}"
+           class="list-group-item list-group-item-action {{ Request::is('customer/dashboard/info-pengerjaan*') ? 'active' : '' }} {{ Request::is('customer/dashboard/detail-pengerjaan*') ? 'active' : '' }}">Tracking
+            Pengerjaan</a>
+        <a href="#" class="list-group-item list-group-item-action">Transactions</a>
+        <a href="#" class="list-group-item list-group-item-action">My Account</a>
     </div>
 </div>
