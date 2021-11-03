@@ -13,7 +13,7 @@
         <h1 class="h3 mb-2 text-gray-800">Customer Booking No#<strong>{{ $pengerjaan->booking->no_booking }}</strong> </h1>
         <div class="card  mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Detail Booking Kerusakan</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Detail Booking Customer</h6>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -127,6 +127,7 @@
                                 <th>Tgl Pengerjaan</th>
                                 <th>Nama Pengerjaan</th>
                                 <th>Gambar</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <thead>
@@ -138,6 +139,13 @@
                                     <td class=" align-middle">
                                         <img src="{{ Storage::url($item->images) }}" width="300" alt="">
                                     </td class=" align-middle">
+                                    <td class="align-middle">
+                                        @if ($item->status == 'proses')
+                                            <span class="btn btn-sm btn-warning"> <i class="fas fa-cog fa-spin mr-1"></i>pengerjaan</span>
+                                        @else
+                                            <span class="btn btn-sm btn-success"><i class="fas fa-check-circle mr-1"></i>selesai</span>
+                                        @endif
+                                    </td>
                                 </tr>
                             @empty
                                 <div class="alert alert-danger">history pengerjaan belum ada</div>

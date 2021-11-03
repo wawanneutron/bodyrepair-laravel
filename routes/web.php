@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\EstimasiBookingController;
 use App\Http\Controllers\Admin\PengerjaanController;
 use App\Http\Controllers\Admin\PriceListController;
 use App\Http\Controllers\BookingPerbaikanController;
+use App\Http\Controllers\TrackingPerbaikanController;
 use App\Http\Controllers\User\BookingController;
 use App\Http\Controllers\User\EstimasiController;
 use App\Http\Controllers\User\DashboardController as UserDashboardController;
@@ -17,6 +18,9 @@ Route::get('/', function () {
     return view('pages.home');
 })->name('home');
 
+Route::post('tracking-perbaikan', [TrackingPerbaikanController::class, 'tracking'])
+    ->name('tracking-perbaikan');
+
 Route::prefix('customer')
     ->middleware(['auth', 'user'])
     ->group(function () {
@@ -27,7 +31,6 @@ Route::prefix('customer')
         Route::get('/booking-success/{id}', [BookingPerbaikanController::class, 'success'])
             ->name('success');
 
-        Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard-user');
         Route::get('/dashboard/info-booking', [BookingController::class, 'booking'])->name('info-booking');
         Route::put('/dashboard/info-booking/{id}', [BookingController::class, 'update'])->name('info-booking-update');
 
@@ -48,5 +51,6 @@ Route::prefix('admin')
         Route::resource('/dashboard/pengerjaan-bodyrepair', PengerjaanController::class, ['as' => 'dashboard']);
         Route::post('/dashboard/create-history-pengerjaan-bodyrepair/{id}', [PengerjaanController::class, 'createHistory'])->name('create-history');
         Route::put('/dashboard/update-pengerjaan-bodyrepair/{id}', [PengerjaanController::class, 'updateStatus'])->name('update-status');
+        Route::put('/dashboard/status-pengerjaan/{id}', [PengerjaanController::class, 'statusGalleryPengerjaan'])->name('status-pengerjaan');
         Route::get('/dashboard/ajax/job-list/search', [PriceListController::class, 'ajaxSearch']);
     });

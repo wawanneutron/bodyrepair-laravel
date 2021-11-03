@@ -19,6 +19,9 @@
                     <li class="nav-item ms-4">
                         <a class="nav-link" href="#kontak">Contact</a>
                     </li>
+                    <li class="nav-item ms-4">
+                        <a class="nav-link" href="#tracking">Tracking</a>
+                    </li>
                 </ul>
                 @auth
                     <ul class="navbar-nav me-3 ">
@@ -34,7 +37,7 @@
                             </a>
                             @if (Auth::user()->roles === 'USER')
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{{ url('/customer/dashboard') }}">Dashboard</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('info-booking') }}">Dashboard</a></li>
                                     <li><a class="dropdown-item" href="#">History</a></li>
                                     <li>
                                         <hr class="dropdown-divider" />

@@ -97,7 +97,7 @@ class PengerjaanController extends Controller
             return redirect()->route('dashboard.pengerjaan-bodyrepair.edit', $pengerjaan->id)
                 ->with(['success' => 'Data Berhasil Disimpan!']);
         } else {
-            return redirect()->route('dashboard.estimasi-bodyrepair.edit', $pengerjaan->id)
+            return redirect()->route('dashboard.pengerjaan-bodyrepair.edit', $pengerjaan->id)
                 ->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
@@ -115,10 +115,33 @@ class PengerjaanController extends Controller
             return redirect()->route('dashboard.pengerjaan-bodyrepair.edit', $pengerjaan->id)
                 ->with(['success' => 'Data Berhasil Disimpan!']);
         } else {
-            return redirect()->route('dashboard.estimasi-bodyrepair.edit', $pengerjaan->id)
+            return redirect()->route('dashboard.pengerjaan-bodyrepair.edit', $pengerjaan->id)
                 ->with(['error' => 'Data Gagal Disimpan!']);
         }
     }
+
+    public function statusGalleryPengerjaan(Request $request, $id)
+    {
+        $this->validate($request, [
+            'nama_pengerjaan' => 'required'
+        ]);
+
+        $pengerjaanGallery = PengerjaanGallery::find($id);
+
+        $pengerjaanGallery->update([
+            'nama_pengerjaan' => $request->nama_pengerjaan,
+            'status' => $request->status
+        ]);
+
+        if ($pengerjaanGallery) {
+            return redirect()->route('dashboard.pengerjaan-bodyrepair.edit', $pengerjaanGallery->pengerjaan_id)
+                ->with(['success' => 'Data Berhasil Disimpan!']);
+        } else {
+            return redirect()->route('dashboard.pengerjaan-bodyrepair.edit', $pengerjaanGallery->pengerjaan_id)
+                ->with(['error' => 'Data Gagal Disimpan!']);
+        }
+    }
+
     /**
      * Remove the specified resource from storage.
      *

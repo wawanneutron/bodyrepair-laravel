@@ -24,4 +24,14 @@ class Booking extends Model
     {
         return $this->belongsTo(Estimasi::class, 'id', 'booking_id');
     }
+
+    public function pengerjaan()
+    {
+        return $this->belongsTo(Pengerjaan::class, 'id', 'booking_id');
+    }
+
+    public function galleyPengerjaans()
+    {
+        return $this->hasMany(PengerjaanGallery::class, 'booking_id', 'id');
+    }
 }

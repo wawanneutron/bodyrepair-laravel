@@ -39,30 +39,46 @@
         </div>
     </main>
     <section class="about container" id="about">
-        <div class="row">
-            <div class="col-md-6 col-carousel">
-                <h1>Kenali Apa Itu MBS ?</h3>
-                    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active" data-bs-interval="3500">
-                                <img src="/images/body-repair/1.jpg" class="d-block w-100">
-                            </div>
-                            <div class="carousel-item" data-bs-interval="2000">
-                                <img src="/images/body-repair/2.jpg" class="d-block w-100">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="/images/body-repair/3.jpg" class="d-block w-100">
-                            </div>
+        <div class="row mb-5" id="tracking">
+            <div class="text-header text-center mb-4">
+                <h4>Lacak Status Pengerjaan Kendaraan Anda</h4>
+            </div>
+            <div class="row justify-content-center text-center">
+                <div class="col-md-7">
+                    <form action="{{ route('tracking-perbaikan') }}" method="POST">
+                        @csrf
+                        <div class="input-group">
+                            <input type="text" name="tracking" id="tracking" class="form-control" style="padding: 30px 20px;" placeholder="masukan kode booking anda" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Lihat Pengerjaan</button>
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 50px !important;">
+            <div class="col-md-6 col-carousel">
+                <h1>Kenali Apa Itu MBS ?</h1>
+                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="3500">
+                            <img src="/images/body-repair/1.jpg" class="d-block w-100">
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="/images/body-repair/2.jpg" class="d-block w-100">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/images/body-repair/3.jpg" class="d-block w-100">
+                        </div>
                     </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
             </div>
             <div class="col-md-6">
                 <div class="title">
@@ -289,7 +305,7 @@
     <script>
         $("#myDiv").floatingWhatsApp({
             phone: "6281297135155",
-            popupMessage: "Aada yang bisa saya bantu?",
+            popupMessage: "Ada yang bisa saya bantu?",
             showPopup: true,
             autoOpenTimeout: 3000,
         });

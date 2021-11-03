@@ -7,7 +7,7 @@
 <script>
     $("#myDiv").floatingWhatsApp({
         phone: "6281297135155",
-        popupMessage: "Aada yang bisa saya bantu?",
+        popupMessage: "Ada yang bisa saya bantu?",
         showPopup: true,
         // autoOpenTimeout: 3000,
     });

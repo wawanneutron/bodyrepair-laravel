@@ -3,7 +3,6 @@
         <img src="{{ url('/images/Logo-Tekno-Oke.png') }}" width="80" alt="" class="my-3" />
     </div>
     <div class="list-group list-group-flush">
-        <a href="{{ route('dashboard-user') }}" class="list-group-item list-group-item-action {{ Request::is('customer/dashboard') ? 'active' : '' }}">Dashboard</a>
         <a href=" {{ route('info-booking') }} " class="list-group-item list-group-item-action {{ Request::is('customer/dashboard/info-booking*') ? 'active' : '' }}">Booking</a>
         <a href=" {{ route('info-estimasi') }} "
            class="list-group-item list-group-item-action {{ Request::is('customer/dashboard/info-estimasi*') ? 'active' : '' }} {{ Request::is('customer/dashboard/detail-estimasi*') ? 'active' : '' }}">Estimasi</a>

@@ -5,7 +5,7 @@
         {{-- <h1 class="h3 mb-2 text-gray-800">Customer Booking No#<strong>{{ $pengerjaan->booking->no_booking }}</strong> </h1> --}}
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Detail Booking Kerusakan</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Detail Booking Customer</h6>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -157,7 +157,7 @@
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="status" id="selesai" value="selesai" {{ $pengerjaan->status == 'selesai' ? 'checked' : '' }}>
-                                            <label class="form-check-label" for="selesai">Selsai</label>
+                                            <label class="form-check-label" for="selesai">Pengerjaan telah selsai</label>
                                         </div>
                                     </div>
                                 </div>
@@ -186,6 +186,7 @@
                                 <th>No</th>
                                 <th>Tgl Pengerjaan</th>
                                 <th>Nama Pengerjaan</th>
+                                <th>Status</th>
                                 <th>Gambar</th>
                                 <th>Aksi</th>
                             </tr>
@@ -197,12 +198,67 @@
                                     <td class=" align-middle">{{ $item->created_at }}</td>
                                     <td class=" align-middle">{{ $item->nama_pengerjaan }}</td>
                                     <td class=" align-middle">
+                                        @if ($item->status == 'proses')
+                                            <span class="btn btn-sm btn-warning"> <i class="fas fa-cog fa-spin mr-1"></i>pengerjaan</span>
+                                        @else
+                                            <span class="btn btn-sm btn-success"><i class="fas fa-check-circle mr-1"></i>selesai</span>
+                                        @endif
+                                    </td>
+                                    <td class=" align-middle">
                                         <img src="{{ Storage::url($item->images) }}" width="300" alt="">
                                     </td class=" align-middle">
                                     <td class=" align-middle">
-                                        <button onclick="Delete(this.id)" id="{{ $item->id }}" class=" btn btn-sm btn-danger"><i class="fa fa-trash "></i></button>
+                                        <button onclick="Delete(this.id)" id="{{ $item->id }}" class=" btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
+                                        <button class=" btn btn-sm btn-primary" data-toggle="modal" data-target="#editModal{{ $item->id }}"><i class="far fa-edit "></i></button>
                                     </td>
                                 </tr>
+                                {{-- modal edit --}}
+                                <div class="modal fade" id="editModal{{ $item->id }}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="editModalLabel">Update status pengerjaan</strong></h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form action="{{ route('status-pengerjaan', $item->id) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <div class="form-group">
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="status" id="proses" value="proses" {{ $item->status == 'proses' ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="proses">Sedang dikerjakan</label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                            <input class="form-check-input" type="radio" name="status" id="success" value="selesai" {{ $item->status == 'selesai' ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="success">Pengerjaan telah selsai</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group mt-3">
+                                                        <label for="name">Nama Pekerjaan</label>
+                                                        <input type="text" name="nama_pengerjaan" id="name" class="form-control @error('nama_pengerjaan') is_invalid @enderror"
+                                                               value="{{ $item->nama_pengerjaan }}">
+                                                        @error('nama_pengerjaan')
+                                                            <div class="alert alert-danger mt-1" role="alert">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group mt-3">
+                                                        <label for="img">Photo Pengerjann</label> <br>
+                                                        <img src="{{ Storage::url($item->images) }}" width="200" alt="" title="{{ $item->nama_pengerjaan }}">
+                                                        <input type="file" name="images" id="img">
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+                                                        <button type="submit" class="btn btn-primary">Update</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {{-- end modal edit --}}
                             @empty
                                 <div class="alert alert-danger">history pengerjaan belum ada</div>
                             @endforelse

@@ -34,7 +34,7 @@
                                         <td>{{ dateID($item->booking->tgl_kedatangan) }}</td>
                                         <td>
                                             @if ($item->status == 'proses')
-                                                <span class="btn btn-sm btn-info"> <i class="fas fa-cog fa-spin mr-1"></i>pengerjaan</span>
+                                                <span class="btn btn-sm btn-warning"> <i class="fas fa-cog fa-spin mr-1"></i>pengerjaan</span>
                                             @else
                                                 <span class="btn btn-sm btn-success"><i class="fas fa-check-circle mr-1"></i>selesai</span>
                                             @endif
