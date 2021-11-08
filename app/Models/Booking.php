@@ -32,6 +32,7 @@ class Booking extends Model
 
     public function galleyPengerjaans()
     {
-        return $this->hasMany(PengerjaanGallery::class, 'booking_id', 'id');
+        return $this->hasMany(PengerjaanGallery::class, 'booking_id', 'id')
+            ->orderBy('created_at', 'desc');
     }
 }

@@ -63,9 +63,15 @@ class PengerjaanController extends Controller
     {
         $pengerjaan = Pengerjaan::findOrFail($id);
         $subtotal = $pengerjaan->estimasi->priceLists()->sum('harga');
-        $dataPengerjaan = PengerjaanGallery::where('pengerjaan_id', $pengerjaan->id)->get();
+        $dataPengerjaan = PengerjaanGallery::where('pengerjaan_id', $pengerjaan->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
 
-        return view('pages.dashboard-admin.pengerjaan.edit', compact('pengerjaan', 'subtotal', 'dataPengerjaan'));
+        return view('pages.dashboard-admin.pengerjaan.edit', compact(
+            'pengerjaan',
+            'subtotal',
+            'dataPengerjaan'
+        ));
     }
 
     /**

@@ -16,7 +16,9 @@ class PriceListController extends Controller
      */
     public function index()
     {
-        $priceList = PriceList::all();
+        $priceList = PriceList::when(request()->q, function ($priceList) {
+            $priceList = $priceList->where('jenis_pekerjaan', 'like', '%' . request()->q . '%');
+        })->paginate(10);
         return view('pages.dashboard-admin.price-list.index', compact('priceList'));
     }
 

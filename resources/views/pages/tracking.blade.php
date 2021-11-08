@@ -136,7 +136,7 @@
                                                             <strong>Total</strong>
                                                         </td>
                                                         <td class="right">
-                                                            <strong>{{ moneyFormat($tracking->estimasies->priceLists->sum('harga') + $tracking->estimasies->priceLists->sum('harga')) }}</strong>
+                                                            <strong>{{ moneyFormat($tracking->estimasies->priceLists->sum('harga') + hitungPajak($tracking->estimasies->priceLists->sum('harga'))) }}</strong>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -186,7 +186,7 @@
                                                         @endif
                                                     </td>
                                                     <td class=" align-middle">
-                                                        <img src="{{ Storage::url($item->images) }}" width="200" alt="">
+                                                        <img src="{{ Storage::url($item->images) }}" width="200" alt="" class=" rounded-3">
                                                     </td class=" align-middle">
 
                                                 </tr>

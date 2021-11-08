@@ -124,8 +124,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="listPekerjaan">upload gambar</label>
-                                        <input type="file" name="images" class=" form-control">
-
+                                        <input type="file" name="images" class=" form-control-file">
                                     </div>
                                 </div>
                                 <div class="col-12 mt-2">
@@ -252,6 +251,7 @@
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                                         <button type="submit" class="btn btn-primary">Update</button>
+                                                        <button type="reset" class="btn btn-warning">Reset</button>
                                                     </div>
                                                 </form>
                                             </div>
