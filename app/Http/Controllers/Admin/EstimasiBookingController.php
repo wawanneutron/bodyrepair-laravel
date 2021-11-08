@@ -66,6 +66,7 @@ class EstimasiBookingController extends Controller
     public function edit($id)
     {
         $estimasiBooking = Estimasi::findOrFail($id);
+        dd($estimasiBooking);
         $subTotal = $estimasiBooking->priceLists()->sum('harga');
 
         return view('pages.dashboard-admin.estimasi.edit', [

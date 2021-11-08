@@ -48,9 +48,15 @@
                     <form action="{{ route('tracking-perbaikan') }}" method="POST">
                         @csrf
                         <div class="input-group">
-                            <input type="text" name="tracking" id="tracking" class="form-control" style="padding: 30px 20px;" placeholder="masukan kode booking anda" aria-describedby="button-addon2">
+                            <input type="text" name="tracking" id="tracking" class="form-control @error('tracking') is_invalid @enderror" style="padding: 30px 20px;"
+                                   placeholder="masukan kode booking anda" aria-describedby="button-addon2">
                             <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Lihat Pengerjaan</button>
                         </div>
+                        @error('tracking')
+                            <div class="alert alert-danger mt-2" role="alert">
+                                <span>{{ $message }}</span>
+                            </div>
+                        @enderror
                     </form>
                 </div>
             </div>
