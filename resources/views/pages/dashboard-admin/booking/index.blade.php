@@ -1,8 +1,13 @@
 @extends('layouts.dashboard-admin.app')
 @section('content')
     <div class="container-fluid">
-
         <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <a href="{{ route('laporan-booking-masuk') }}" class="btn btn-sm btn-primary ml-auto shadow-sm">
+                <i class="fas fa-download fa-sm text-white-50"></i>
+                Download Laporan
+            </a>
+        </div>
         <h1 class="h3 mb-2 text-gray-800">Booking Masuk</h1>
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
@@ -39,7 +44,8 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <button type="button" class=" btn btn-sm btn-secondary" data-toggle="modal" data-target="#editModal{{ $booking->id }}"><i class="far fa-edit mr-2"></i>ubah</button>
+                                        <button type="button" class=" btn btn-sm btn-secondary" data-toggle="modal" data-target="#editModal{{ $booking->id }}"><i
+                                               class="far fa-edit mr-2"></i>ubah</button>
                                         <button onclick="Delete(this.id)" id="{{ $booking->id }}" class=" btn btn-sm btn-danger"><i class="fa fa-trash mr-2"></i>hapus</button>
                                     </td>
                                 </tr>

@@ -4,7 +4,7 @@
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus fa-sm text-white-50"></i> Tambah Data </button>
-            <a href="#" class="btn btn-sm btn-primary shadow-sm">
+            <a href="{{ route('laporan-pricelist') }}" class="btn btn-sm btn-primary shadow-sm">
                 <i class="fas fa-download fa-sm text-white-50"></i>
                 Download Laporan
             </a>

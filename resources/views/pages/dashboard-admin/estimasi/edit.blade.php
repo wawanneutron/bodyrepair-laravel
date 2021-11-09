@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <a href="#" class="btn btn-sm btn-primary ml-auto shadow-sm">
+            <a href="{{ route('laporan-estimasi', $estimasi->id) }}" class="btn btn-sm btn-primary ml-auto shadow-sm">
                 <i class="fas fa-download fa-sm text-white-50"></i>
                 Download Laporan
             </a>

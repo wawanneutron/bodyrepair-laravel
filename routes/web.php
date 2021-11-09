@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\BookingMasukController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\EstimasiBookingController;
+use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\PengerjaanController;
 use App\Http\Controllers\Admin\PriceListController;
 use App\Http\Controllers\BookingPerbaikanController;
@@ -53,4 +54,9 @@ Route::prefix('admin')
         Route::put('/dashboard/update-pengerjaan-bodyrepair/{id}', [PengerjaanController::class, 'updateStatus'])->name('update-status');
         Route::put('/dashboard/status-pengerjaan/{id}', [PengerjaanController::class, 'statusGalleryPengerjaan'])->name('status-pengerjaan');
         Route::get('/dashboard/ajax/job-list/search', [PriceListController::class, 'ajaxSearch']);
+
+        /* laporan */
+        Route::get('dashboard/laporan-pricelist', [LaporanController::class, 'jenisPekerjaan'])->name('laporan-pricelist');
+        Route::get('dashboard/laporan-booking-masuk', [LaporanController::class, 'bookingMasuk'])->name('laporan-booking-masuk');
+        Route::get('dashboard/laporan-estimasi/{id}', [LaporanController::class, 'estimasi'])->name('laporan-estimasi');
     });
