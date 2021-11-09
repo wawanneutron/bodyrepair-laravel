@@ -18,7 +18,12 @@ class BookingMasukController extends Controller
      */
     public function index()
     {
-        $bookings = Booking::with('users')->get();
+        $bookings = Booking::when(request()->q, function ($bookings) {
+            $bookings->where('no_booking', 'like', '%' . request()->q . '%');
+        })
+            ->orderBy('created_at', 'DESC')
+            ->paginate(10);
+        // $bookings = Booking::with('users')->get();
         return view('pages.dashboard-admin.booking.index', compact('bookings'));
     }
 
