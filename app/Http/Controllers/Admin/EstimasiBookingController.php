@@ -18,7 +18,9 @@ class EstimasiBookingController extends Controller
      */
     public function index()
     {
-        $estimasiBooking = Estimasi::with(['users', 'booking'])->get();
+        $estimasiBooking = Estimasi::with(['users', 'booking'])
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         return view('pages.dashboard-admin.estimasi.index', [
             'estimasies' => $estimasiBooking,

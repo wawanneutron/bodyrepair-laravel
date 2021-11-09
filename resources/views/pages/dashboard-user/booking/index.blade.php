@@ -13,18 +13,20 @@
                     <th>Nama Kendaraan</th>
                     <th>No Polisi</th>
                     <th>Tanggal Booking</th>
+                    <th>Tanggal Kedatangan</th>
                     <th>Status</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($infoBooking as $booking)
+                @forelse ($infoBooking as $booking)
                     <tr>
                         <td class=" align-middle">{{ $booking->no_booking }}</td>
                         <td class=" align-middle">{{ $booking->users->first_name }} {{ $booking->users->last_name }}</td>
                         <td class=" align-middle">{{ $booking->nama_mobil }}</td>
                         <td class=" align-middle">{{ $booking->nopol }}</td>
                         <td class=" align-middle">{{ dateID($booking->created_at) }}</td>
+                        <td class=" align-middle">{{ dateID($booking->tgl_kedatangan) }}</td>
                         <td class=" align-middle">
                             @if ($booking->status == 'ditunda')
                                 <span class=" badge badge-pill  bg-primary text-light">{{ $booking->status }}</span>
@@ -107,7 +109,9 @@
                         </div>
                     </div>
                     {{-- end modal edit --}}
-                @endforeach
+                @empty
+                    <div class="alert alert-danger">Data booking belum ada</div>
+                @endforelse
             </tbody>
         </table>
     </div>

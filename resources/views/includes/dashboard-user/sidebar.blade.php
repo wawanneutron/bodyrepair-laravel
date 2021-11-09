@@ -9,7 +9,7 @@
         <a href=" {{ route('info-pengerjaan') }}"
            class="list-group-item list-group-item-action {{ Request::is('customer/dashboard/info-pengerjaan*') ? 'active' : '' }} {{ Request::is('customer/dashboard/detail-pengerjaan*') ? 'active' : '' }}">Tracking
             Pengerjaan</a>
-        <a href="#" class="list-group-item list-group-item-action">Transactions</a>
+        {{-- <a href="#" class="list-group-item list-group-item-action">Transactions</a> --}}
         <a href="#" class="list-group-item list-group-item-action">My Account</a>
     </div>
 </div>

@@ -46,10 +46,17 @@
                                     <td>{{ $item->jenis_pekerjaan }}</td>
                                     <td>{{ moneyFormat($item->harga) }}</td>
                                     <td width="15%">
-                                        <button class=" btn btn-sm btn-secondary" data-toggle="modal" data-target="#editModal{{ $item->id }}">
-                                            <i class="far fa-edit mr-2"></i>ubah
-                                        </button>
-                                        <button onclick="Delete(this.id)" id="{{ $item->id }}" class=" btn btn-sm btn-danger"><i class="fa fa-trash mr-2"></i>hapus</button>
+                                        <div class="dropdown">
+                                            <button class="btn btn-sm btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Aksi
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <button class=" btn btn-sm btn-secondary dropdown-item mb-1" data-toggle="modal" data-target="#editModal{{ $item->id }}">
+                                                    <i class="far fa-edit mr-2"></i>ubah
+                                                </button>
+                                                <button onclick="Delete(this.id)" id="{{ $item->id }}" class=" btn btn-sm btn-danger dropdown-item mb-1"><i class="fa fa-trash mr-2"></i>hapus</button>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                                 {{-- modal edit --}}

@@ -45,7 +45,7 @@
                         </td>
                     </tr>
                 @empty
-                    <div class="alert alert-danger">Tidak ada list harga</div>
+                    <div class="alert alert-danger">Data estimasi belum ada</div>
                 @endforelse
             </tbody>
         </table>

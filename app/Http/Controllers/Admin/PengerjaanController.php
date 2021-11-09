@@ -17,7 +17,9 @@ class PengerjaanController extends Controller
      */
     public function index()
     {
-        $data = Pengerjaan::with(['users', 'booking'])->get();
+        $data = Pengerjaan::with(['users', 'booking'])
+            ->orderBy('created_at', 'desc')
+            ->get();
         return view('pages.dashboard-admin.pengerjaan.index', compact('data'));
     }
 

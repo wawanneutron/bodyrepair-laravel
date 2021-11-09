@@ -6,7 +6,7 @@
             @if ($pengerjaan->status == 'proses')
                 <div class="alert alert-info mt-5">Kendaraan Anda sedang dalam <strong>pengerjaan</strong> </div>
             @elseif($pengerjaan->status == 'selesai')
-                <div class="alert alert-success mt-5">Kendaraan Anda sudah <strong>Selesai</strong> dikerjakan, silahkan melakukan pembayaran</div>
+                <div class="alert alert-success mt-5">Kendaraan Anda sudah <strong>Selesai</strong> dikerjakan, silahkan datang ke lokasi untuk pengambilan unit</div>
             @endif
         </div>
         <!-- Page Heading -->
