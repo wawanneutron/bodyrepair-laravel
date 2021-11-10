@@ -22,34 +22,34 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4">
-                        <div class="text-header">Nama Pemilik</div>
-                        <div class="text-subheader">{{ $detailEstimasi->users->first_name }} {{ $detailEstimasi->users->last_name }}</div>
-                        <div class="text-header">No Whatsapp / Handphone</div>
-                        <div class="text-subheader">{{ $detailEstimasi->users->no_wa }}</div>
+                        <div class="mb-1">Nama Pemilik</div>
+                        <div class=" text-black-50 mb-2">{{ $detailEstimasi->users->first_name }} {{ $detailEstimasi->users->last_name }}</div>
+                        <div class="mb-1">No Whatsapp / Handphone</div>
+                        <div class=" text-black-50 mb-2">{{ $detailEstimasi->users->no_wa }}</div>
                     </div>
                     <div class="col-md-4">
-                        <div class="text-header">Email</div>
-                        <div class="text-subheader">{{ $detailEstimasi->users->email }}</div>
-                        <div class="text-header">Alamat</div>
-                        <div class="text-subheader">{{ $detailEstimasi->users->alamat }}</div>
+                        <div class="mb-1">Email</div>
+                        <div class=" text-black-50 mb-2">{{ $detailEstimasi->users->email }}</div>
+                        <div class="mb-1">Alamat</div>
+                        <div class=" text-black-50 mb-2">{{ $detailEstimasi->users->alamat }}</div>
 
                     </div>
                     <div class="col-md-4">
-                        <div class="text-header">Nomor Polisi</div>
-                        <div class="text-subheader">{{ $detailEstimasi->booking->nopol }}</div>
-                        <div class="text-header">Nama Mobil</div>
-                        <div class="text-subheader">{{ $detailEstimasi->booking->nama_mobil }}</div>
+                        <div class="mb-1">Nomor Polisi</div>
+                        <div class=" text-black-50 mb-2">{{ $detailEstimasi->booking->nopol }}</div>
+                        <div class="mb-1">Nama Mobil</div>
+                        <div class=" text-black-50 mb-2">{{ $detailEstimasi->booking->nama_mobil }}</div>
                     </div>
                     <div class="col-md-4">
-                        <div class="text-header">Tanggal Booking</div>
-                        <div class="text-subheader">{{ $detailEstimasi->booking->created_at }}</div>
-                        <div class="text-header">Tanggal Kedatangan</div>
-                        <div class="text-subheader">{{ dateID($detailEstimasi->booking->tgl_kedatangan) }}</div>
+                        <div class="mb-1">Tanggal Booking</div>
+                        <div class=" text-black-50 mb-2">{{ $detailEstimasi->booking->created_at }}</div>
+                        <div class="mb-1">Tanggal Kedatangan</div>
+                        <div class=" text-black-50 mb-2">{{ dateID($detailEstimasi->booking->tgl_kedatangan) }}</div>
                     </div>
                     <div class="col-md-4">
-                        <div class="text-header">Catatan</div>
-                        <div class="text-subheader">{{ $detailEstimasi->booking->catatan }}</div>
-                        <div class="text-header">Total Perbaikan</div>
+                        <div class="mb-1">Catatan</div>
+                        <div class=" text-black-50 mb-2">{{ $detailEstimasi->booking->catatan }}</div>
+                        <div class="mb-1">Total Perbaikan</div>
                         @if ($detailEstimasi->total_harga)
                             {{ moneyFormat($detailEstimasi->total_harga) }}
                         @else

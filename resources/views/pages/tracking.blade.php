@@ -25,59 +25,61 @@
                     <div class="card-header  py-3">
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#customer" type="button" role="tab" aria-controls="customer" aria-selected="true">Detail
-                                    Booking</button>
+                                <button class="nav-link" id="home-tab" data-bs-toggle="tab" data-bs-target="#customer" type="button" role="tab" aria-controls="customer" aria-selected="true">Detail
+                                    Booking Customer</button>
                             </li>
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#list" type="button" role="tab" aria-controls="list" aria-selected="false">List
                                     Perbaikan</button>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="false">Info
-                                    Pengerjaan</button>
+                                <button class="nav-link active" id="contact-tab" data-bs-toggle="tab" data-bs-target="#info" type="button" role="tab" aria-controls="info" aria-selected="false">Info
+                                    Status Pengerjaan</button>
                             </li>
                         </ul>
 
                     </div>
                     <div class="card-body">
                         <div class="tab-content" id="myTabContent">
-                            <div class="tab-pane fade show active" id="customer" role="tabpanel" aria-labelledby="customer-tab">
+                            <div class="tab-pane fade" id="customer" role="tabpanel" aria-labelledby="customer-tab">
                                 <div class="row">
                                     @foreach ($trackings as $tracking)
                                         <div class="col-md-4">
-                                            <div class="text-header">Nama Pemilik</div>
-                                            <div class="text-subheader">{{ $tracking->users->first_name }} {{ $tracking->users->last_name }}</div>
-                                            <div class="text-header">No Whatsapp / Handphone</div>
-                                            <div class="text-subheader">{{ $tracking->users->no_wa }}</div>
+                                            <div class="mb-1">Nama Pemilik</div>
+                                            <div class=" text-black-50 mb-2">{{ $tracking->users->first_name }} {{ $tracking->users->last_name }}</div>
+                                            <div class="mb-1">No Whatsapp / Handphone</div>
+                                            <div class=" text-black-50 mb-2">{{ $tracking->users->no_wa }}</div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="text-header">Email</div>
-                                            <div class="text-subheader">{{ $tracking->users->email }}</div>
-                                            <div class="text-header">Alamat</div>
-                                            <div class="text-subheader">{{ $tracking->users->alamat }}</div>
+                                            <div class="mb-1">Email</div>
+                                            <div class="text-black-50 mb-2">{{ $tracking->users->email }}</div>
+                                            <div class="mb-1">Alamat</div>
+                                            <div class="text-black-50 mb-2">{{ $tracking->users->alamat }}</div>
 
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="text-header">Nomor Polisi</div>
-                                            <div class="text-subheader">{{ $tracking->nopol }}</div>
-                                            <div class="text-header">Nama Mobil</div>
-                                            <div class="text-subheader">{{ $tracking->nama_mobil }}</div>
+                                            <div class="mb-1">Nomor Polisi</div>
+                                            <div class="text-black-50 mb-2">{{ $tracking->nopol }}</div>
+                                            <div class="mb-1">Nama Mobil</div>
+                                            <div class="text-black-50 mb-2">{{ $tracking->nama_mobil }}</div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="text-header">Tanggal Booking</div>
-                                            <div class="text-subheader">{{ $tracking->created_at }}</div>
-                                            <div class="text-header">Tanggal Kedatangan</div>
-                                            <div class="text-subheader">{{ dateID($tracking->tgl_kedatangan) }}</div>
+                                            <div class="mb-1">Tanggal Booking</div>
+                                            <div class="text-black-50 mb-2">{{ $tracking->created_at }}</div>
+                                            <div class="mb-1">Tanggal Kedatangan</div>
+                                            <div class="text-black-50 mb-2">{{ dateID($tracking->tgl_kedatangan) }}</div>
                                         </div>
                                         <div class="col-md-4">
-                                            <div class="text-header">Catatan</div>
-                                            <div class="text-subheader">{{ $tracking->catatan }}</div>
-                                            <div class="text-header">Total Perbaikan</div>
-                                            @if ($tracking->estimasies->total_harga)
-                                                {{ moneyFormat($tracking->estimasies->total_harga) }}
-                                            @else
-                                                <span class="badge badge-pill badge-danger">Not check-in</span>
-                                            @endif
+                                            <div class="mb-1">Catatan</div>
+                                            <div class="text-black-50 mb-2">{{ $tracking->catatan }}</div>
+                                            <div class="mb-1">Total Perbaikan</div>
+                                            <div class=" text-black-50 mb-2">
+                                                @if ($tracking->estimasies->total_harga)
+                                                    {{ moneyFormat($tracking->estimasies->total_harga) }}
+                                                @else
+                                                    <span class="badge bg-danger">Not check-in</span>
+                                                @endif
+                                            </div>
                                         </div>
                                     @endforeach
                                 </div>
@@ -137,7 +139,7 @@
                                         </div>
                                     </div>
                                 @else
-                                    <div class="alert alert-danger"><strong>{{ $tracking->users->first_name }}</strong> Belum melakukan pengecekan kendaraan</div>
+                                    <div class="alert alert-danger">Hii, <strong>{{ $tracking->users->first_name }}</strong> kamu belum melakukan pengecekan kendaraan kelokasi</div>
                                     <div class="table-responsive-sm table-hover">
                                         <table class="table table-striped">
                                             <thead>
@@ -153,7 +155,7 @@
                                 @endif
 
                             </div>
-                            <div class="tab-pane fade" id="info" role="tabpanel" aria-labelledby="info-tab">
+                            <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
                                 @if ($tracking->pengerjaan->status == 'proses')
                                     <div class="alert alert-info mt-2">Kendaraan Anda sedang dalam <strong>pengerjaan</strong> </div>
                                 @elseif($tracking->pengerjaan->status == 'selesai')
