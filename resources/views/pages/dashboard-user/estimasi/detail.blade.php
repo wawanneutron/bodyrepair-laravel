@@ -8,7 +8,7 @@
             @else
                 <div class="alert alert-danger mt-5">Anda belum melakukan pengecekan kendaraan, silahkan datang sesuai dengan tanggal kedatangan</div>
             @endif
-            <a href="#" class="btn btn-sm btn-primary float-end ">
+            <a href="{{ route('laporan-estimasi-customer', $detailEstimasi->id) }}" class="btn btn-sm btn-primary float-end ">
                 <i class="fas fa-download fa-sm text-white-50"></i>
                 Download Pdf
             </a>

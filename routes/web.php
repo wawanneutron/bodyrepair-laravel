@@ -10,7 +10,7 @@ use App\Http\Controllers\BookingPerbaikanController;
 use App\Http\Controllers\TrackingPerbaikanController;
 use App\Http\Controllers\User\BookingController;
 use App\Http\Controllers\User\EstimasiController;
-use App\Http\Controllers\User\DashboardController as UserDashboardController;
+use App\Http\Controllers\User\LaporanController as UserLaporanController;
 use App\Http\Controllers\User\PengerjaanController as UserPengerjaanController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +40,8 @@ Route::prefix('customer')
 
         Route::get('/dashboard/info-pengerjaan', [UserPengerjaanController::class, 'index'])->name('info-pengerjaan');
         Route::get('/dashboard/detail-pengerjaan/{id}', [UserPengerjaanController::class, 'details'])->name('detail-pengerjaan');
+
+        Route::get('dashboard/laporan-estimasi/{id}', [UserLaporanController::class, 'laporanEstimasi'])->name('laporan-estimasi-customer');
     });
 
 Route::prefix('admin')
