@@ -38,7 +38,8 @@
                             @if (Auth::user()->roles === 'USER')
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="{{ route('info-booking') }}">Dashboard</a></li>
-                                    <li><a class="dropdown-item" href="#">History</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('info-pengerjaan') }}">History</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('account-customer') }}">My Account</a></li>
                                     <li>
                                         <hr class="dropdown-divider" />
                                     </li>
@@ -47,7 +48,7 @@
                             @else
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
-                                    <li><a class="dropdown-item" href="#">Setings</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('account-admin') }}">Setings</a></li>
                                     <li>
                                         <hr class="dropdown-divider" />
                                     </li>

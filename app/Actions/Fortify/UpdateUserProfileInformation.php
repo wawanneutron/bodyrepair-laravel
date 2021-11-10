@@ -19,7 +19,10 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     public function update($user, array $input)
     {
         Validator::make($input, [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:50'],
+            'last_name' => ['required', 'string', 'max:50'],
+            'no_wa' => ['required', 'string', 'max:12'],
+            'alamat' => ['required', 'string', 'max:255'],
 
             'email' => [
                 'required',
@@ -30,14 +33,21 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
             ],
         ])->validateWithBag('updateProfileInformation');
 
-        if ($input['email'] !== $user->email &&
-            $user instanceof MustVerifyEmail) {
+        if (
+            $input['email'] !== $user->email &&
+            $user instanceof MustVerifyEmail
+        ) {
             $this->updateVerifiedUser($user, $input);
         } else {
             $user->forceFill([
-                'name' => $input['name'],
+                'first_name' => $input['first_name'],
+                'last_name' => $input['last_name'],
+                'no_wa' => $input['no_wa'],
+                'alamat' => $input['alamat'],
                 'email' => $input['email'],
             ])->save();
+            // dd(
+            // );
         }
     }
 
@@ -51,7 +61,10 @@ class UpdateUserProfileInformation implements UpdatesUserProfileInformation
     protected function updateVerifiedUser($user, array $input)
     {
         $user->forceFill([
-            'name' => $input['name'],
+            'first_name' => $input['first_name'],
+            'last_name' => $input['last_name'],
+            'no_wa' => $input['no_wa'],
+            'alamat' => $input['alamat'],
             'email' => $input['email'],
             'email_verified_at' => null,
         ])->save();

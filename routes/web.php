@@ -6,12 +6,15 @@ use App\Http\Controllers\Admin\EstimasiBookingController;
 use App\Http\Controllers\Admin\LaporanController;
 use App\Http\Controllers\Admin\PengerjaanController;
 use App\Http\Controllers\Admin\PriceListController;
+use App\Http\Controllers\Admin\ProfileController as AdminProfileController;
 use App\Http\Controllers\BookingPerbaikanController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TrackingPerbaikanController;
 use App\Http\Controllers\User\BookingController;
 use App\Http\Controllers\User\EstimasiController;
 use App\Http\Controllers\User\LaporanController as UserLaporanController;
 use App\Http\Controllers\User\PengerjaanController as UserPengerjaanController;
+use App\Http\Controllers\User\ProfileController as UserProfileController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -42,6 +45,8 @@ Route::prefix('customer')
         Route::get('/dashboard/detail-pengerjaan/{id}', [UserPengerjaanController::class, 'details'])->name('detail-pengerjaan');
 
         Route::get('dashboard/laporan-estimasi/{id}', [UserLaporanController::class, 'laporanEstimasi'])->name('laporan-estimasi-customer');
+
+        Route::get('dashboard/account-setting', [UserProfileController::class, 'myAccount'])->name('account-customer');
     });
 
 Route::prefix('admin')
@@ -61,4 +66,6 @@ Route::prefix('admin')
         Route::get('dashboard/laporan-pricelist', [LaporanController::class, 'jenisPekerjaan'])->name('laporan-pricelist');
         Route::get('dashboard/laporan-booking-masuk', [LaporanController::class, 'bookingMasuk'])->name('laporan-booking-masuk');
         Route::get('dashboard/laporan-estimasi/{id}', [LaporanController::class, 'estimasi'])->name('laporan-estimasi');
+
+        Route::get('dashboard/account-setting', [AdminProfileController::class, 'myAccount'])->name('account-admin');
     });
