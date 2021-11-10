@@ -50,11 +50,13 @@
                         <div class="mb-1">Catatan</div>
                         <div class=" text-black-50 mb-2">{{ $detailEstimasi->booking->catatan }}</div>
                         <div class="mb-1">Total Perbaikan</div>
-                        @if ($detailEstimasi->total_harga)
-                            {{ moneyFormat($detailEstimasi->total_harga) }}
-                        @else
-                            <span class="badge badge-pill badge-danger">Not check-in</span>
-                        @endif
+                        <div class="text-black-50 mb-2">
+                            @if ($detailEstimasi->total_harga)
+                                {{ moneyFormat($detailEstimasi->total_harga) }}
+                            @else
+                                <span class="badge bg-danger">Not check-in</span>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
