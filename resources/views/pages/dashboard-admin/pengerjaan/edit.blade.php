@@ -139,11 +139,21 @@
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label for="pengerjaan">Nama Pekerjaan</label>
-                                                <input type="text" name="nama_pengerjaan" class="form-control" id="pengerjaan">
+                                                <input type="text" name="nama_pengerjaan" class="form-control @error('nama_pengerjaan') is_invalid @enderror" id="pengerjaan">
+                                                @error('nama_pengerjaan')
+                                                    <div class="alert alert-danger mt-1" role="alert">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                             <div class="form-group">
                                                 <label for="listPekerjaan">upload gambar</label>
                                                 <input type="file" name="images" class=" form-control-file">
+                                                @error('images')
+                                                    <div class="alert alert-danger mt-1" role="alert">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="col-12 mt-2">
@@ -224,7 +234,7 @@
                                                 @endif
                                             </td>
                                             <td class=" align-middle">
-                                                <img src="{{ Storage::url($item->images) }}" width="300" alt="">
+                                                <img src="{{ Storage::url($item->images) }}" width="200" alt="MBS Body Repair" title="{{ $item->nama_pengerjaan }}" style=" border-radius: 8px;">
                                             </td class=" align-middle">
                                             <td class=" align-middle">
                                                 <button onclick="Delete(this.id)" id="{{ $item->id }}" class=" btn btn-sm btn-danger"><i class="fa fa-trash"></i></button>
@@ -242,7 +252,7 @@
                                                         </button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <form action="{{ route('status-pengerjaan', $item->id) }}" method="POST">
+                                                        <form action="{{ route('status-pengerjaan', $item->id) }}" method="POST" enctype="multipart/form-data">
                                                             @csrf
                                                             @method('PUT')
                                                             <div class="form-group">
@@ -267,8 +277,11 @@
                                                             </div>
                                                             <div class="form-group mt-3">
                                                                 <label for="img">Photo Pengerjann</label> <br>
-                                                                <img src="{{ Storage::url($item->images) }}" width="200" alt="" title="{{ $item->nama_pengerjaan }}">
-                                                                <input type="file" name="images" id="img">
+                                                                <img src="{{ Storage::url($item->images) }}" width="150" class=" img-thumbnail" alt="" title="{{ $item->nama_pengerjaan }}">
+                                                                <input type="file" name="images" class="mt-2" id="img">
+                                                                @error('images')
+                                                                    <div class="alert alert-danger mt-1" role="alert">{{ $message }}</div>
+                                                                @enderror
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

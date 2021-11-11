@@ -90,6 +90,11 @@ class PengerjaanController extends Controller
 
     public function createHistory(Request $request, $id)
     {
+        $this->validate($request, [
+            'nama_pengerjaan' => 'required',
+            'images' => 'required|mimes:jpeg,png,jpg,gif|max:1000'
+        ]);
+
         $pengerjaan = Pengerjaan::find($id);
         $image = $request->file('images')->store('history-images', 'public');
 
@@ -131,15 +136,27 @@ class PengerjaanController extends Controller
     public function statusGalleryPengerjaan(Request $request, $id)
     {
         $this->validate($request, [
-            'nama_pengerjaan' => 'required'
+            'nama_pengerjaan' => 'required',
+            'images' => 'image|mimes:jpeg,png,jpg,gif|max:1000'
         ]);
 
         $pengerjaanGallery = PengerjaanGallery::find($id);
 
-        $pengerjaanGallery->update([
-            'nama_pengerjaan' => $request->nama_pengerjaan,
-            'status' => $request->status
-        ]);
+        // cek jika request tidak ada file gambar
+        if ($request->file('images') == null) {
+            $pengerjaanGallery->update([
+                'nama_pengerjaan' => $request->nama_pengerjaan,
+                'status' => $request->status
+            ]);
+        } else {
+            // jika ada maka hapus gambar lama, dan update gambar baru
+            Storage::disk('local')->delete('public/' . $pengerjaanGallery->images);
+            $pengerjaanGallery->update([
+                'nama_pengerjaan' => $request->nama_pengerjaan,
+                'status' => $request->status,
+                'images' => $request->file('images')->store('history-images', 'public')
+            ]);
+        }
 
         if ($pengerjaanGallery) {
             return redirect()->route('dashboard.pengerjaan-bodyrepair.edit', $pengerjaanGallery->pengerjaan_id)
