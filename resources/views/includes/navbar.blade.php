@@ -31,15 +31,14 @@
                                 Account
                             </a> --}}
                             <a href="#" class="nav-link nav-avatar" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                                <img src="https://ui-avatars.com/api/?name={{ Auth::user()->first_name }}=joko&background=ff8906&color=ffffff" alt="user"
-                                     class="rounded-circle me-2 profile-picture shadow" width="50" />
+                                <img src="{{ auth()->user()->getAvatarUrl() }}" alt="user" class="rounded-circle me-2 profile-picture shadow" style="width: 50px; height: 50px;" />
                                 Hi, {{ Auth::user()->first_name }} <i class="fas fa-caret-down ms-1"></i>
                             </a>
                             @if (Auth::user()->roles === 'USER')
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="{{ route('info-booking') }}">Dashboard</a></li>
                                     <li><a class="dropdown-item" href="{{ route('info-pengerjaan') }}">History</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('account-customer') }}">My Account</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('account-customer') }}">My Profile</a></li>
                                     <li>
                                         <hr class="dropdown-divider" />
                                     </li>
@@ -48,7 +47,7 @@
                             @else
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('account-admin') }}">Setings</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('account-admin') }}">My Profile</a></li>
                                     <li>
                                         <hr class="dropdown-divider" />
                                     </li>

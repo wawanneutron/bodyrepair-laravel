@@ -11,8 +11,7 @@
             <ul class="navbar-nav navbar-dashboard ms-auto d-none d-md-flex">
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                        <img src="https://ui-avatars.com/api/?name={{ Auth::user()->first_name }}&background=1f1235&color=ffffff" alt="user" class="rounded-circle mr-2 profile-picture shadow"
-                             width="50" />
+                        <img src="{{ auth()->user()->getAvatarUrl() }}" alt="user" class="rounded-circle mr-2 profile-picture shadow" style="width: 50px; height: 50px;" />
                         Hi, {{ Auth::user()->first_name }}
                     </a>
                     <div class="dropdown-menu text-black-50">

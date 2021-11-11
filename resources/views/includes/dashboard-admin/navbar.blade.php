@@ -150,8 +150,8 @@
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ Auth::user()->first_name }}</span>
-                <img src="https://ui-avatars.com/api/?name={{ Auth::user()->first_name }}&background=1f1235&color=ffffff" alt="user" class="rounded-circle mr-2 profile-picture shadow" width="40" />
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Hii, {{ Auth::user()->first_name }}</span>
+                <img src="{{ auth()->user()->getAvatarUrl() }}" alt="user" class="rounded-circle mr-2 profile-picture shadow" style="width: 40px; height: 40px;" />
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

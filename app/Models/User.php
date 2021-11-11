@@ -60,4 +60,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(Pengerjaan::class);
     }
+
+    /* 
+    function menampilkana avatar dari link,
+    jika user tidak mempunyai avatar 
+    */
+    public function getAvatarUrl()
+    {
+        if ($this->avatar != null) {
+            return asset(url('storage', $this->avatar));
+        } else {
+            return 'https://ui-avatars.com/api/?name=' . str_replace(' ', '+', $this->first_name) .
+                '&background=e29000&color=ffffff&size=100';
+        }
+    }
 }

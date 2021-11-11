@@ -1,6 +1,6 @@
 @extends('layouts.dashboard-user.app')
 @section('content')
-    <div class="container-fluid" style="padding-top: 140px;">
+    <div class="container-fluid" style="padding-top: 80px;">
         <div class="row">
             <div class="col-md-12">
                 @if (session('status'))
@@ -21,12 +21,24 @@
         <div class="row justify-content-center">
             <div class="col-md-7">
                 <div class="card border-0 shadow">
-                    <div class="card-header m-0 font-weight-bold text-uppercase"><i class="fas fa-user-circle mr-3"></i>edit profile</div>
+                    <div class="card-header m-0 font-weight-bold text-uppercase"><i class="fas fa-user-circle me-2"></i>edit profile</div>
                     <div class="card-body">
-                        <form action="{{ route('user-profile-information.update') }}" method="post">
+                        <form action="{{ route('user-profile-information.update') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="row">
+                                <div class="col-12 text-center mb-4">
+                                    <img src="{{ auth()->user()->getAvatarUrl() }}" class=" rounded-circle" style="width: 220px; height: 220px;"> <br>
+                                    <span class=" small"><i>update photo profile</i></span>
+                                    <div class="form-group mb-3">
+                                        <input type="file" name="avatar" id="avatar" class=" form-control-file @error('avatar') is-invalid @enderror">
+                                        @error('avatar')
+                                            <div class="invalid-feedback">
+                                                <h6 class=" alert alert-danger">{{ $message }}</h6>
+                                            </div>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <div class="col-md-6 mb-3">
                                     <div class="form-group mb-2">
                                         <label for="first_name">Nama Pertama</label>
@@ -98,7 +110,7 @@
             <div class="col-md-5">
                 <div class="card border-0 shadow mb-4">
                     <div class="card-header">
-                        <h6 class="m-0 font-weight-bold text-uppercase"><i class="fas fa-unlock mr-3"></i>update password</h6>
+                        <h6 class="m-0 font-weight-bold text-uppercase"><i class="fas fa-unlock me-2"></i>update password</h6>
                     </div>
                     <div class="card-body">
                         <form action="{{ route('user-password.update') }}" method="post">

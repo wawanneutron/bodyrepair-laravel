@@ -25,9 +25,21 @@
                 <div class="card border-0 shadow">
                     <div class="card-header m-0 font-weight-bold text-uppercase"><i class="fas fa-user-circle mr-3"></i>edit profile</div>
                     <div class="card-body">
-                        <form action="{{ route('user-profile-information.update') }}" method="post">
+                        <form action="{{ route('user-profile-information.update') }}" method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
+                            <div class="col-12 text-center mb-4">
+                                <img src="{{ auth()->user()->getAvatarUrl() }}" class=" rounded-circle img-thumbnail shadow" style="width: 220px; height: 220px;"> <br>
+                                <span class=" small"><i>update photo profile</i></span>
+                                <div class="form-group mb-5">
+                                    <input type="file" name="avatar" id="avatar" class=" form-control-file @error('avatar') is-invalid @enderror">
+                                    @error('avatar')
+                                        <div class="invalid-feedback">
+                                            <h6 class=" alert alert-danger">{{ $message }}</h6>
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
                                     <div class="form-group mb-2">
