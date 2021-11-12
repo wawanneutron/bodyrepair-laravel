@@ -36,22 +36,33 @@
                             </a>
                             @if (Auth::user()->roles === 'USER')
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{{ route('info-booking') }}">Dashboard</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('info-pengerjaan') }}">History</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('account-customer') }}">My Profile</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('info-booking') }}">
+                                            <i class="fas fa-fw fa-tachometer-alt me-1 text-black-50"></i>
+                                            Dashboard</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('account-customer') }}">
+                                            <i class="fas fa-user-cog me-1 text-black-50"></i>
+                                            My Profile</a></li>
                                     <li>
                                         <hr class="dropdown-divider" />
                                     </li>
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
+                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                                            <i class="fas fa-sign-out-alt me-1 text-black-50"></i>
+                                            Logout</a></li>
                                 </ul>
                             @else
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="{{ route('dashboard') }}">Dashboard</a></li>
-                                    <li><a class="dropdown-item" href="{{ route('account-admin') }}">My Profile</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('dashboard') }}">
+                                            <i class="fas fa-fw fa-tachometer-alt me-1 text-black-50"></i>
+                                            Dashboard</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('account-admin') }}">
+                                            <i class="fas fa-user-cog me-1 text-black-50"></i>
+                                            My Profile</a></li>
                                     <li>
                                         <hr class="dropdown-divider" />
                                     </li>
-                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
+                                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                                            <i class="fas fa-sign-out-alt me-1 text-black-50"></i>
+                                            Logout</a></li>
                                 </ul>
                             @endif
                         </li>

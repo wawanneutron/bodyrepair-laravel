@@ -14,15 +14,8 @@
     <li class="nav-item  {{ Request::is('admin/dashboard/statistik') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('dashboard') }}">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <span>Analitikal</span></a>
     </li>
-    <!-- Nav Item - Charts -->
-    <li class="nav-item {{ Request::is('admin/dashboard/price-list*') ? 'active' : '' }}">
-        <a class="nav-link" href="{{ route('dashboard.price-list.index') }}">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Price List</span></a>
-    </li>
-
     <!-- Divider -->
     {{-- <hr class="sidebar-divider">
 
@@ -68,7 +61,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Body Repair Data
+        Kelola Data Body Repair
     </div>
 
     <!-- Nav Item - Pages Collapse Menu -->
@@ -86,6 +79,13 @@
             </div>
         </div>
     </li> --}}
+
+    <!-- Nav Item - Charts -->
+    <li class="nav-item {{ Request::is('admin/dashboard/price-list*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('dashboard.price-list.index') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Price List</span></a>
+    </li>
 
     <!-- Nav Item - Tables -->
     <li class="nav-item {{ Request::is('admin/dashboard/booking-masuk*') ? 'active' : '' }}">

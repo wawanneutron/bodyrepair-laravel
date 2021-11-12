@@ -9,14 +9,22 @@
         <div class="collapse navbar-collapse bg-light" id="navbarDashboard">
             <!--desktop menu -->
             <ul class="navbar-nav navbar-dashboard ms-auto d-none d-md-flex">
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown me-4">
                     <a href="#" class="nav-link" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
                         <img src="{{ auth()->user()->getAvatarUrl() }}" alt="user" class="rounded-circle mr-2 profile-picture shadow" style="width: 50px; height: 50px;" />
                         Hi, {{ Auth::user()->first_name }}
                     </a>
                     <div class="dropdown-menu text-black-50">
-                        <a href="{{ url('/') }} " class="dropdown-item mb-2"> Home</a>
-                        <a href="#" class="dropdown-item text-black-50" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
+                        <a href="{{ route('home') }} " class="dropdown-item mb-2">
+                            <i class="fas fa-home me-1 text-black-50"></i>
+                            Home</a>
+                        <a href="{{ route('account-customer') }} " class="dropdown-item mb-2">
+                            <i class="fas fa-user-cog me-1 text-black-50"></i>
+                            My Account</a>
+                        <hr>
+                        <a href="#" class="dropdown-item text-black-50" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                            <i class="fas fa-sign-out-alt me-1 text-black-50"></i>
+                            Logout</a>
                     </div>
                 </li>
             </ul>
