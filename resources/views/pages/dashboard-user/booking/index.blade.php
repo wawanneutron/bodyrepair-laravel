@@ -77,13 +77,21 @@
                                             <div class="col-md-12 mt-4">
                                                 <div class="form-group">
                                                     <label for="recipient-name" class="col-form-label small">Tanggal Kedatangan:</label>
-                                                    <input type="date" value="{{ $booking->tgl_kedatangan }}" name="tgl_kedatangan" class="form-control @error('tgl_kedatangan') in-valid @enderror"
-                                                           id="recipient-name">
-                                                    @error('tgl_kedatangan')
-                                                        <div class="alert alert-danger mt-2">
-                                                            {{ $message }}
-                                                        </div>
-                                                    @enderror
+                                                    @if ($booking->status == 'diterima')
+                                                        <input type="date" value="{{ $booking->tgl_kedatangan }}" name="tgl_kedatangan" class="form-control" disabled id="recipient-name">
+                                                        <span style="font-size: 12px;"><i>* status kamu sudah<span class=" badge bg-success small">{{ $booking->status }}</span>
+                                                                silahkan datang sesuai
+                                                                dengan tanggal
+                                                                kedatangan</i></span>
+                                                    @else
+                                                        <input type="date" value="{{ $booking->tgl_kedatangan }}" name="tgl_kedatangan" class="form-control @error('tgl_kedatangan') in-valid @enderror"
+                                                               id="recipient-name">
+                                                        @error('tgl_kedatangan')
+                                                            <div class="alert alert-danger mt-2">
+                                                                {{ $message }}
+                                                            </div>
+                                                        @enderror
+                                                    @endif
                                                 </div>
                                             </div>
                                             <div class="col-md-12 mt-4">
