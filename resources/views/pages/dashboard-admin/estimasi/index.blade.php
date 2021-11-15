@@ -62,7 +62,7 @@
                                                     <a href="{{ route('dashboard.estimasi-booking.edit', $item->id) }}" class=" btn btn-sm btn-primary dropdown-item ">
                                                         <i class="far fa-edit mr-2"></i>ubah
                                                     </a>
-                                                    <button onclick="Delete(this.id)" id="{{ $item->id }}" class=" btn btn-sm btn-danger dropdown-item "><i class="fa fa-trash mr-2"></i>hapus</button>
+                                                    {{-- <button onclick="Delete(this.id)" id="{{ $item->id }}" class=" btn btn-sm btn-danger dropdown-item "><i class="fa fa-trash mr-2"></i>hapus</button> --}}
                                                 </div>
                                             </div>
                                         </td>
