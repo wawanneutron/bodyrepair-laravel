@@ -18,7 +18,9 @@
                         <div class="card-body p-0">
                             <!-- Nested Row within Card Body -->
                             <div class="row">
-                                <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                                <div class="col-lg-6 d-none d-lg-block">
+                                    <img src="{{ url('/images/mbs_logo_transparent.png') }}" alt="" class="w-100 mt-5">
+                                </div>
                                 <div class="col-lg-6">
                                     @if (session('status'))
                                         <div class="alert alert-success" role="alert">
@@ -60,9 +62,9 @@
                                             </button>
                                         </form>
                                         <hr>
-                                        <div class="text-center">
+                                        {{-- <div class="text-center">
                                             <a class="small" href="{{ route('password.request') }}">Lupa Password?</a>
-                                        </div>
+                                        </div> --}}
                                         <div class="text-center">
                                             <a class="small" href="{{ route('register') }}">Buat Akun Baru!</a>
                                         </div>
