@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Storage;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -68,7 +69,7 @@ class User extends Authenticatable
     public function getAvatarUrl()
     {
         if ($this->avatar != null) {
-            return asset(url('storage', $this->avatar));
+            return Storage::url($this->avatar);
         } else {
             return 'https://ui-avatars.com/api/?name=' . str_replace(' ', '+', $this->first_name) .
                 '&background=e29000&color=ffffff&size=100';
