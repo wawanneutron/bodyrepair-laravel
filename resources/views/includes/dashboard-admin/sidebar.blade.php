@@ -109,6 +109,13 @@
     </li>
 
     <!-- Nav Item - Tables -->
+    <li class="nav-item {{ Request::is('admin/dashboard/laporan') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('input-periodik') }}">
+            <i class="fas fa-file-pdf"></i>
+            <span>Laporan</span></a>
+    </li>
+
+    <!-- Nav Item - Tables -->
     <li class="nav-item {{ Request::is('admin/dashboard/account-setting*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('account-admin') }}">
             <i class="fas fa-user-cog"></i>

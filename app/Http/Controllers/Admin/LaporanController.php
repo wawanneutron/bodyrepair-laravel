@@ -32,14 +32,36 @@ class LaporanController extends Controller
     public function estimasi($id)
     {
         $estimasiBooking = Estimasi::findOrFail($id);
-        $subTotal = $estimasiBooking->priceLists()->sum('harga');
+        $subTotal = $estimasiBooking->total_harga;
 
         $pdf = PDF::loadView('pages.dashboard-admin.laporan.laporan-estimasi', [
             'estimasi' => $estimasiBooking,
             'subtotal' => $subTotal
         ])->setPaper('a4', 'landscape');
 
-        return $pdf->download('laporan-estimasi-harga.pdf');
+        return $pdf->stream('laporan-estimasi-harga.pdf');
+    }
+
+    public function inputPeriodik()
+    {
+        return view('pages.dashboard-admin.laporan.laporan-periodik');
+    }
+
+    public function printReport(Request $request)
+    {
+        $estimasiBooking = Estimasi::whereBetween('created_at', [
+            $request->startDate,
+            $request->endDate
+        ])->get();
+        // dd($estimasiBooking);
+        $subTotal = $estimasiBooking->sum('total_harga');
+
+        $pdf = PDF::loadView('pages.dashboard-admin.laporan.laporan-print-periodik', [
+            'estimasies' => $estimasiBooking,
+            'subtotal' => $subTotal
+        ])->setPaper('a4', 'landscape');
+
+        return $pdf->stream('laporan-periodik.pdf');
     }
 }
 

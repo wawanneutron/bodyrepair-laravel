@@ -66,6 +66,8 @@ Route::prefix('admin')
         Route::get('dashboard/laporan-pricelist', [LaporanController::class, 'jenisPekerjaan'])->name('laporan-pricelist');
         Route::get('dashboard/laporan-booking-masuk', [LaporanController::class, 'bookingMasuk'])->name('laporan-booking-masuk');
         Route::get('dashboard/laporan-estimasi/{id}', [LaporanController::class, 'estimasi'])->name('laporan-estimasi');
+        Route::get('dashboard/laporan', [LaporanController::class, 'inputPeriodik'])->name('input-periodik');
+        Route::post('dashboard/laporan-periodik', [LaporanController::class, 'printReport'])->name('print-periodik');
 
         Route::get('dashboard/account-setting', [AdminProfileController::class, 'myAccount'])->name('account-admin');
     });
