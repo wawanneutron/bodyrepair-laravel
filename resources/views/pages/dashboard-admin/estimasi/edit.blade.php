@@ -87,8 +87,13 @@
                                 <div class="col-12">
                                     <div class="form-group">
                                         <label for="listPekerjaan">Nama Pekerjaan</label>
-                                        <select name="listPekerjaan[]" multiple id="listPekerjaan" class="form-control">
+                                        <select name="listPekerjaan[]" multiple id="listPekerjaan" class="form-control @error('listPekerjaan') is-invalid @enderror">
                                         </select>
+                                        @error('listPekerjaan')
+                                            <div class="invalid-feedback">
+                                                <div class="alert alert-danger">{{ $message }}</div>
+                                            </div>
+                                        @enderror
                                         {{-- <input type="hidden" name="total_harga" value="{{ $subtotal + hitungPajak($subtotal) }}"> --}}
                                     </div>
                                 </div>

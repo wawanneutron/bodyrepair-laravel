@@ -23,7 +23,7 @@
         icon: "success",
         title: "BERHASIL!",
         text: "{{ session('success') }}",
-        timer: 1500,
+        // timer: 1500,
         showConfirmButton: false,
         showCancelButton: false,
         buttons: false,

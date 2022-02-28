@@ -85,6 +85,9 @@ class EstimasiBookingController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'listPekerjaan' => 'required'
+        ]);
         $data = Estimasi::findOrFail($id);
         $pengerjaan = Pengerjaan::where('estimasi_id', $data->id)->first();
 
